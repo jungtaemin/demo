@@ -7,9 +7,20 @@
   * **구성한 덱 공유 기능** - 내가 덱 만들기로 구성한덱 공유하면 공유게시판에 바로 등록 다른사람덱들을 볼 수 있다.(조회수 기능,추천 기능,결투,던정 등 카테고리별로)
   
 
+# 패치노트 v0.2 (2023-06-15)
+![canasave](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/06fd61e4-b94a-4e07-9ebc-2de06c64d0c9)
+* 로그인 기능 구현 - 세션,쿠키 방식의 기본적인 방식으로 구현
+  * 만들려는 홈페이지는 복잡한 로그인정보가 필요없다고 판단해 구글로그인 같은 방식말고 자체 홈페이지 로그인 방식을 사용
+  * 로그인정보는 일단 기본적인 아이디 닉네임 비밀번호만 받는걸로.
+  * 비밀번호는 BCrypt 암호화를 하여 User테이블에 저장  
+![cana2](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/291f5e6a-6959-4c02-af1f-5eb6cef1b629)
+* 카나테일즈 카드 DB -기본틀 디자인 개선
+   * 디자인 게임의 카드 상세 참고해서 개선.
+   * 카나테일즈 카드 DB 값 전부 대부분 추가.
 
 
-
+     
+   
 
 # 패치노트 v0.1 (2023-06-15)
 ![canac](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/e15bd1ea-7280-4b86-bab7-075f2457910b)
