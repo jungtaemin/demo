@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.user.repository.UserRepository">
+    <insert id="join">
+        INSERT INTO
+            user
+            (
+                userName,
+                email,
+                passWord,
+                createDate
+            )
+        VALUES(
+                #{userName},
+                #{email},
+                #{passWord},
+                NOW()
+            )
+    </insert>
+
+
+    <select id="login" parameterType="String">
+        SELECT
+            userName,
+            email,
+            passWord,
+            createDate
+        FROM
+            user
+        WHERE
+            userName = #{userName}
+
+    </select>
+
+
+</mapper>
