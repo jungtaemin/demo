@@ -2,36 +2,39 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.demo.user.repository.UserRepository">
-    <insert id="join">
+<mapper namespace="com.example.kanatales_deckmaker.user.repository.UserRepository">
+    <insert id="join" parameterType="com.example.kanatales_deckmaker.user.domain.User">
         INSERT INTO
             user
             (
-                userName,
-                email,
-                passWord,
+                username,
+                nickname,
+                password,
+                role,
                 createDate
             )
         VALUES(
-                #{userName},
-                #{email},
-                #{passWord},
+                #{username},
+                #{nickname},
+                #{password},
+                #{role},
                 NOW()
             )
     </insert>
 
 
-    <select id="login" parameterType="String">
+    <select id="findByUsername" parameterType="String">
         SELECT
-            userName,
-            email,
-            passWord,
+            id,
+            username,
+            nickname,
+            password,
+            role,
             createDate
         FROM
             user
         WHERE
-            userName = #{userName}
-
+            username = #{username}
     </select>
 
 

@@ -29,6 +29,16 @@ const dbCardDetail = id =>{
         $("#dbName").html(dbCardDetail.name);
         $("#dbImage").attr("src",dbCardDetail.image);
         $("#dbInitial").html(dbCardDetail.effect);
+        $("#dbRarityType").html(dbCardDetail.rarityType);
+        $("#dbPoint").html(dbCardDetail.point);
+        $("#dbEpisode").html(dbCardDetail.episode);
+         $("#dbLimit").html(dbCardDetail.limit);
+        $("#dbCardType").html(dbCardDetail.cardType);
+        if(dbCardDetail.tag1 =="" || dbCardDetail.tag1 == null){
+            $("#dbTag").html("없음");
+        }else{
+            $("#dbTag").html(dbCardDetail.tag1+" "+dbCardDetail.tag2);
+        }
     }).fail((e) =>{
         console.log(e);
     });

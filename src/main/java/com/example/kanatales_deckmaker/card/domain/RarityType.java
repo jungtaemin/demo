@@ -1,4 +1,4 @@
-package com.example.demo.card.domain;
+package com.example.kanatales_deckmaker.card.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

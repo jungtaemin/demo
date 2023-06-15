@@ -1,6 +1,6 @@
-package com.example.demo.card.repository;
+package com.example.kanatales_deckmaker.card.repository;
 
-import com.example.demo.card.domain.Card;
+import com.example.kanatales_deckmaker.card.domain.Card;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

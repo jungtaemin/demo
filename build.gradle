@@ -19,7 +19,8 @@ repositories {
 }
 
 dependencies {
-	implementation "org.springframework.boot:spring-boot-starter-security" // 스프링 시큐리티 관련 라이브러리
+	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation 'org.springframework.security:spring-security-taglibs'// 스프링 시큐리티 태그
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 	implementation 'javax.servlet:jstl'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'

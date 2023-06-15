@@ -1,7 +1,7 @@
-package com.example.demo.card.controller;
+package com.example.kanatales_deckmaker.card.controller;
 
-import com.example.demo.card.domain.Card;
-import com.example.demo.card.service.CardService;
+import com.example.kanatales_deckmaker.card.domain.Card;
+import com.example.kanatales_deckmaker.card.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

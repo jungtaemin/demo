@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +8,7 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/common.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -15,31 +17,34 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link active" href="#">카나테일즈 덱메이커</a>
+        <a class="nav-link active" href="/">카나테일즈 덱메이커</a>
       </li>
-    <c:choose>
-        <c:when test="${empty sessionScope.principal}">
+
+    <sec:authorize access="isAnonymous()">
             <li class="nav-item">
-                            <a class="nav-link" href="#">로그인</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/user/join">회원가입</a>
-                          </li>
-        </c:when>
-        <c:otherwise>
-            <li class="nav-item">
-                            <a class="nav-link" href="#">내정보</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link" href="/user/join">글쓰기</a>
+                            <a class="nav-link" href="/loginForm">로그인</a>
             </li>
-        </c:otherwise>
+                          <li class="nav-item">
+                            <a class="nav-link" href="/join">회원가입</a>
+                          </li>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
 
+          <li class="nav-item">
+            <a class="nav-link" href="/logout">로그아웃</a>
+          </li>
 
-    </c:choose>
+    </sec:authorize>
+            <li class="nav-item">
+                             <a class="nav-link" href="/card">덱 만들기</a>
+            </li>
             <li class="nav-item">
                              <a class="nav-link" href="/card">카드DB</a>
             </li>
+            <li class="nav-item">
+                             <a class="nav-link" href="/card">덱리</a>
+            </li>
+
     </ul>
   </div>
 </nav>

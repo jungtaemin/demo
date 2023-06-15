@@ -1,14 +1,14 @@
 const join = () => {
 
     let param = {
-    "userName": $("#userName").val(),
-    "email": $("#email").val(),
-    "passWord": $("#password").val()
+    "username": $("#username").val(),
+    "nickname": $("#nickname").val(),
+    "password": $("#password").val()
     }
 
         $.ajax({
             type: "post",
-            url: "/user/join",
+            url: "/join",
             data: JSON.stringify(param),
             contentType: "application/json"
         }).done((res) =>{

@@ -1,9 +1,6 @@
-package com.example.demo.card.domain;
+package com.example.kanatales_deckmaker.card.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Getter
@@ -33,13 +30,20 @@ public class Card {
     private String tag2;
     
     /** 카드 종류 - 캐릭터/스펠/추종자 */
-    private CardType cardType;
+    private String cardType;
     
-    /** 카드 레어도 */
-    private RarityType rarityType;
+    /** 카드 레어도  커먼/언커먼/슈페리어...*/
+    private String rarityType;
+    /** 카드 소속 다크로어/크룩스/사립/공립..*/
+    private String teamType;
+    /** 에피소드 EP1,EP2...*/
+    private String episode;
+    /** 카드 포인트 */
+    private int point;
     /** 이미지 경로 */
     private String image;
-
+    /** 제한 매수 */
+    private int limit;
 
     /** 만약 사용자가 카드 등록을 할경우.. 기본적으로는 사이트 자체 db로 카드데이터를 가져올예정이라 미사용 */
     private String createDate;

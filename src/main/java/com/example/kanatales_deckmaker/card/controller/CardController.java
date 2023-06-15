@@ -1,14 +1,11 @@
-package com.example.demo.card.controller;
+package com.example.kanatales_deckmaker.card.controller;
 
-import com.example.demo.card.domain.Card;
-import com.example.demo.card.service.CardService;
+import com.example.kanatales_deckmaker.card.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @RequiredArgsConstructor

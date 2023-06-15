@@ -1,7 +1,7 @@
-package com.example.demo.card.service;
+package com.example.kanatales_deckmaker.card.service;
 
-import com.example.demo.card.domain.Card;
-import com.example.demo.card.repository.CardRepository;
+import com.example.kanatales_deckmaker.card.domain.Card;
+import com.example.kanatales_deckmaker.card.repository.CardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
