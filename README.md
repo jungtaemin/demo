@@ -12,7 +12,7 @@
 
 
 # 패치노트 v0.1 (2023-06-15)
-![](../canac.gif)
+![canac](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/e15bd1ea-7280-4b86-bab7-075f2457910b)
 * 카나테일즈 카드 DB 작업시작 - 기본 틀 제작 완료
   * 카나테일즈 카드 DB 데이터들을 목록으로 작게 가져와서 그이미지를 클릭시 밑에 바로 상세 페이지를 ajax통신(JSON데이터로)으로 들고와 페이지가 깜박이지 않고 바로 상세
   페이지를 볼 수 있게 구성.
