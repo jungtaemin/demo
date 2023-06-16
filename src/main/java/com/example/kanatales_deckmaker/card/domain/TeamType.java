@@ -11,7 +11,7 @@ public enum TeamType {
         ,CRUX("크룩스")
         ,ROYLE("사립")
         ,VITA("공립")
-        ,ETC("기타");
+        ,ETC("무소속");
 
     private final String name;
 

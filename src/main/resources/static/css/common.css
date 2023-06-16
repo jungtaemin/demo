@@ -3,9 +3,43 @@
     font-weight: 700;
     color: #61554F;
 }
+.smallContentFont {
+        font-size: 14px;
+        font-weight: 900;
+        color: #61554F;
 
+}
 .bigContentFont {
     font-size: 40px;
     font-weight: 1000;
     color: #61554F;
+}
+.scroll-wrap {
+    border:solid 2px;
+    border-color: #61554F;
+    height:800px;
+    top:80px;
+    right:30px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    background-color: #EBEEF1;
+}
+
+.deckUl {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 300px;
+    margin: 0 auto 8px auto;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+}
+body {
+    background-color: #EBEEF1;
 }

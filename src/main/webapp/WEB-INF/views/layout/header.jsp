@@ -8,7 +8,7 @@
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="/css/common.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
 
     </sec:authorize>
             <li class="nav-item">
-                             <a class="nav-link" href="/card">덱 만들기</a>
+                             <a class="nav-link" href="/deck/make">덱 만들기</a>
             </li>
             <li class="nav-item">
                              <a class="nav-link" href="/card">카드DB</a>

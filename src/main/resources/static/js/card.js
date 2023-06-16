@@ -10,7 +10,7 @@ const dbCardList = () =>{
             $("#cardFindAll").append(`<div class="card" style="width:110px"
                                       onclick="dbCardDetail('`+cardList.id+`')">
                                       <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
-                                      <div class="card-header">`+cardList.name+`</div>
+                                      <div class="card-body"><div class="smallContentFont">`+cardList.name+`</div></div>
                                       </div>`)
         })
     }).fail((e) =>{
