@@ -11,15 +11,17 @@
   * ~~**로그인 기능** - 시큐리티 로그인~~(2023-06-16 쿠키-세션방식으로 구현완료)(jwt공부중.프로젝트기간안에 공부가 완료되면 jwt를 사용한방식으로 바꿀예정)
 
 # 패치노트 v0.3 (2023-06-17)
-## 덱 만들기 기능
-![decmac](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/defd42ae-cada-4209-af83-0e5ba1e36b7c)
-* 덱 만들기 기능 작업시작 - 기본틀 구성완료
-  * 우측 카드 목록은 일단 이름으로 검색만 되고 클릭하면 가운데에 덱으로 추가되는형식으로 구상중.
 ## 메인화면 UI 추가
 ![kanaMain](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8cf601c2-2766-4761-a15d-3da499253cb0)
 * 메인화면 UI - 기본틀 구성완료
   * 카드 데이터 작업률을 계속 수정해서 적을예정
   * 기능들을 좀더 시각적으로 위에 메뉴만이 아니라 덱만들기 버튼은 밑에도 따로 디자인적인 버튼으로 추가해도 좋을 것 같다. 
+
+## 덱 만들기 기능
+![decmac](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/defd42ae-cada-4209-af83-0e5ba1e36b7c)
+* 덱 만들기 기능 작업시작 - 기본틀 구성완료
+  * 우측 카드 목록은 일단 이름으로 검색만 되고 클릭하면 가운데에 덱으로 추가되는형식으로 구상중.
+ 
 ## 카나테일즈 카드 DB
 ![v0 3(1)](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8342d7df-9763-4a75-b8ea-12bb969d0569)
 * 카나테일즈 카드 DB -기본틀 디자인 개선
