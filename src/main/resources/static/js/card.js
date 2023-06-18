@@ -1,4 +1,4 @@
-
+// 카드목록을 가져오는 로직
 const dbCardList = () =>{
 
     $.ajax({
@@ -20,7 +20,7 @@ const dbCardList = () =>{
 
 
 
-
+// 카드 상세 정보 표출
 const dbCardDetail = id =>{
     $.ajax({
         type:"GET",

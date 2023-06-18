@@ -1,3 +1,7 @@
+body {
+    background-color: #EBEEF1;
+}
+
 .contentFont {
     font-size: 20px;
     font-weight: 700;
@@ -40,6 +44,20 @@
     user-select: none;
     overflow: hidden;
 }
-body {
-    background-color: #EBEEF1;
+
+.row-margin {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-button {
+    background: url("/images/delete.PNG") no-repeat;
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+}
+
+.deckbutton-group{
+    display: flex;
 }

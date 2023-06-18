@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kanatales_deckmaker.deck.repository.DeckRepository">
+
+    <insert id="saveDeck" parameterType="com.example.kanatales_deckmaker.deck.domain.Deck">
+        INSERT INTO
+            deck(
+            userId,
+            name,
+            card1,
+            card2,
+            card3,
+            card4,
+            card5,
+            card6,
+            card7,
+            card8,
+            card9,
+            card10,
+            card11,
+            card12,
+            card13,
+            card14,
+            card15,
+            card16,
+            card17,
+            card18,
+            card19,
+            card20,
+            card21,
+            card22,
+            card23,
+            card24,
+            card25,
+            card26,
+            card27,
+            card28,
+            card29,
+            card30
+            )
+        VALUES(
+            #{userId},
+            #{name},
+            #{card1},
+            #{card2},
+            #{card3},
+            #{card4},
+            #{card5},
+            #{card6},
+            #{card7},
+            #{card8},
+            #{card9},
+            #{card10},
+            #{card11},
+            #{card12},
+            #{card13},
+            #{card14},
+            #{card15},
+            #{card16},
+            #{card17},
+            #{card18},
+            #{card19},
+            #{card20},
+            #{card21},
+            #{card22},
+            #{card23},
+            #{card24},
+            #{card25},
+            #{card26},
+            #{card27},
+            #{card28},
+            #{card29},
+            #{card30})
+    </insert>
+
+</mapper>
