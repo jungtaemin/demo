@@ -7,19 +7,19 @@ const dbCardList = () =>{
     }).done((cardList) =>{
         cardList.forEach(cardList =>{
             $("#deckDbCardList").append(`<li class="card" style="width:80px"
-                                      onclick="listClickOndeck('`+cardList.id+`','`+cardList.image+`','`+cardList.limit+`')">
+                                      onclick="listClickOndeck('`+cardList.id+`','`+cardList.image+`','`+cardList.limit+`','`+cardList.point+`')">
                                       <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
                                       </li>`)
         })
     }).fail((e) =>{
-        console.log("error:"+e);
+        alert(e);
     });
 }
 // 카드목록 ->카드 클릭시 덱목록으로 쌓이는 로직 - 최대 30장 제한
-const listClickOndeck = (id,imagePath,limit) => {
+const listClickOndeck = (id,imagePath,limit,point) => {
        let count  = $("#deckMakeClickList > span").length;
        if(count <30){
-                limitCheckAndAddDeckCard(id,imagePath,limit);
+                limitCheckAndAddDeckCard(id,imagePath,limit,point);
                 dbCardDetail(id);
        }else{
             alert("덱의 최대 장수는 30장입니다.");
@@ -30,6 +30,8 @@ const listClickOndeck = (id,imagePath,limit) => {
 // 카드 제거 
 const cardRemove = (card) =>{
     card.remove();
+    pointMinus(card.dataset.point);
+    deckCounting();
 }
 
 
@@ -53,17 +55,19 @@ const dbCardDetail = id =>{
             $("#dbTag").html(dbCardDetail.tag1+" "+dbCardDetail.tag2);
         }
     }).fail((e) =>{
-        console.log(e);
+        alert(e);
     });
 }
 
-// 카드 리미트 체크 
-const limitCheckAndAddDeckCard = (id,imagePath,limit) =>  {
+// 카드 리미트 체크 + 덱에 카드 추가 + 덱포인트 계산
+const limitCheckAndAddDeckCard = (id,imagePath,limit,point) =>  {
     let cnt = $("#deckMakeClickList > span[data-cardId="+id+"]").length;
     if(cnt >=limit){
         alert("이카드는 덱에"+limit+"장까지밖에 넣을 수 없습니다.");
     }else{
-        $("#deckMakeClickList").append(`<span oncontextmenu="cardRemove(this);return false;" class="deck-card" data-cardid="`+id+`"><img style="width: 10%;margin-bottom:7px;" src="`+imagePath+`"></span>`);
+        $("#deckMakeClickList").append(`<span oncontextmenu="cardRemove(this);return false;" class="deck-card" data-point="`+point+`"  data-cardid="`+id+`" data-image="`+imagePath+`"><img style="width: 10%;margin-bottom:7px;" src="`+imagePath+`"></span>`);
+        pointPlus(point);
+        deckCounting();
     }
 }
 // 덱 저장
@@ -98,16 +102,66 @@ const deckSaveJson = () =>{
     deckCard.forEach((card,index) =>{
         let indexP = index+1;
         deck['card'+indexP] = card.dataset.cardid;
+        deck['image'+indexP] = card.dataset.image;
     });
     
     $.ajax({
         type:"POST",
-        url:"/deck",
+        url:"/deck/api",
         contentType:"application/json",
         data:JSON.stringify(deck)
     }).done(() =>{
-
-    }).fail(() =>{
-
+        location.href = "/deck/list";
+    }).fail((e) =>{
+        alert(e);
     });
+}
+// 덱 포인트 더하기
+const pointPlus = point =>{
+    let pointSet = Number($("#deckPoint").html())+Number(point);
+    $("#deckPoint").html(pointSet);
+}
+
+// 덱 포인트 빼기
+const pointMinus = point =>{
+    let pointSet = Number($("#deckPoint").html())-Number(point);
+    $("#deckPoint").html(pointSet);
+}
+// 덱으로 추가한 카드 갯수 카운팅
+const deckCounting = () => {
+    let count  = $("#deckMakeClickList > span").length;
+    $("#deckCounting").html(count);
+}
+
+
+// 내 덱 관리 - 덱 리스트 
+const myDeckList = () =>{
+    $.ajax({
+        type:"GET",
+        url:"/deck/api/list"
+    }).done((myDeck)=>{
+        myDeck.forEach(deck =>{
+            $("#myDeckList").append(`<span class="card" style="width:130px;height:160px" onclick="deckInCard(`+deck.id+`);"><span class="card-title">
+            `+deck.name+`
+            </span>
+            <span class="card-body">
+              <img style="width:100px" src="/images/deck_.PNG">
+            </span></span>`);
+        })
+    }).fail((e) =>{
+        alert(e);
+    })
+}
+
+// 내 덱관리의 덱 클릭시 -> 덱 포함된 카드목록
+const deckInCard = id =>{
+    $.ajax({
+        type:"GET",
+        url:"/deck/api/list/"+id
+    }).done((deckInCard)=>{
+
+    }).fail((e) =>{
+        alert(e);
+    })
+
 }

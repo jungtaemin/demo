@@ -46,6 +46,38 @@ public class Deck {
     private Long card29;
     private Long card30;
 
+    private String image1;
+    private String image2;
+    private String image3;
+    private String image4;
+    private String image5;
+    private String image6;
+    private String image7;
+    private String image8;
+    private String image9;
+    private String image10;
+    private String image11;
+    private String image12;
+    private String image13;
+    private String image14;
+    private String image15;
+    private String image16;
+    private String image17;
+    private String image18;
+    private String image19;
+    private String image20;
+    private String image21;
+    private String image22;
+    private String image23;
+    private String image24;
+    private String image25;
+    private String image26;
+    private String image27;
+    private String image28;
+    private String image29;
+    private String image30;
+
+
 
     public void setUserId(Long userId){
         this.userId =userId;

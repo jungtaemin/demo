@@ -8,16 +8,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.attribute.UserPrincipalNotFoundException;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/deck")
+@RequestMapping("/deck/api")
 @Slf4j
 public class DeckApiController {
 
@@ -25,7 +23,6 @@ public class DeckApiController {
 
     @PostMapping
     public ResponseEntity<Deck> saveDeck(@RequestBody Deck deck, @AuthenticationPrincipal UserPrincipal userPrincipal) throws UserPrincipalNotFoundException {
-        log.info("========================================================="+userPrincipal.getId(),userPrincipal.getUsername(),userPrincipal.getPassword());
         if(userPrincipal !=null){
             deckService.saveDeck(deck,userPrincipal.getId());
         }else{
@@ -34,4 +31,21 @@ public class DeckApiController {
 
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Deck>> deckList(@AuthenticationPrincipal UserPrincipal userPrincipal) throws UserPrincipalNotFoundException {
+        if(userPrincipal !=null){
+            List<Deck> deck = deckService.nameFindByUserId(userPrincipal.getId());
+            return new ResponseEntity<>(deck,HttpStatus.OK);
+        }else{
+            throw new UserPrincipalNotFoundException("!");
+        }
+    }
+
+    @GetMapping("/list/{id}")
+    public ResponseEntity<Deck> deckInCardList(@PathVariable Long id){
+        Deck deckInCard = deckService.findById(id);
+        return new ResponseEntity<>(deckInCard,HttpStatus.OK);
+    }
+
 }

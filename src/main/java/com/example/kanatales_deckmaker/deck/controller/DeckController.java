@@ -12,4 +12,8 @@ public class DeckController {
     public String deckMakeForm(){
         return "/deck/deckMaker";
     }
+    @GetMapping("/list")
+    public String deckListForm(){
+        return "/deck/deckList";
+    }
 }

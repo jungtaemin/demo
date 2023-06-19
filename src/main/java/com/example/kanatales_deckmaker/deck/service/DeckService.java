@@ -5,6 +5,8 @@ import com.example.kanatales_deckmaker.deck.repository.DeckRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class DeckService {
@@ -14,5 +16,13 @@ public class DeckService {
     public void saveDeck(Deck deck,Long id){
         deck.setUserId(id);
         deckRepository.saveDeck(deck);
+    }
+
+    public List<Deck> nameFindByUserId(Long id){
+        return deckRepository.nameFindByUserId(id);
+    }
+
+    public Deck findById(Long id){
+        return deckRepository.findById(id);
     }
 }

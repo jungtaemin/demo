@@ -26,7 +26,7 @@ public class SecurityConfig {
 
         http.csrf().disable()
                 .authorizeHttpRequests()
-                .antMatchers("/user/**").authenticated()
+                .antMatchers("/user/**","/deck/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
 

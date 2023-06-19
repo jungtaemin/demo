@@ -9,12 +9,18 @@
             <button type="button" class="btn btn-danger" onclick="deckSave();" style="width:80px;">덱 저장</button>
           </nav>  
      </div>
-     
+  <!-- 덱 카드 선택 리스트 -->
   <div class="card" style="width:93%;height:320px;display:flex;margin-bottom:10px;">
      <div class="card-body" id="deckMakeClickList">
         
      </div>
-  </div>  
+  </div> 
+  <!-- 덱리스트 info -->
+  <div class="card" style="width:93%;height:50px;display:flex;margin-bottom:10px;">
+    <div class="padding-body" id="deckMakeListInfo">
+       <img src="/images/deck_image.PNG" style="width: 30px;"><span class="contentFont" id="deckCounting">0</span><span class="contentFont" style="margin-right: 15px;">/ 30</span><span class="contentFont" id="deckPoint">0</span><span class="contentFont">PT</span>
+    </div>
+ </div>
   <!-- 아래 카드 정보창 -->
   <div class="card" style="height:460px;width:93%;">
     <div class="card-body">

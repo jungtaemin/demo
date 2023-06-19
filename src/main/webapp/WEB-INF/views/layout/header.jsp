@@ -36,6 +36,9 @@
 
     </sec:authorize>
             <li class="nav-item">
+                             <a class="nav-link" href="/deck/list">내 덱 관리</a>
+            </li>
+            <li class="nav-item">
                              <a class="nav-link" href="/deck/make">덱 만들기</a>
             </li>
             <li class="nav-item">

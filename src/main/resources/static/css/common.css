@@ -61,3 +61,13 @@ body {
 .deckbutton-group{
     display: flex;
 }
+
+.padding-body {
+    padding: 5px;
+}
+
+.background-basic{
+
+    background-color: #ffffff;
+    border: #61554F solid 1px;
+}
