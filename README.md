@@ -1,3 +1,4 @@
+![kanaMain](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8cf601c2-2766-4761-a15d-3da499253cb0)
 # kanatales_deckmaker
 
 * 구현 예정
