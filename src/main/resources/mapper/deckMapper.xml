@@ -144,6 +144,8 @@
             deck
         WHERE
             userId = #{userId}
+        ORDER BY
+            id desc
     </select>
 
     <select id="findById" parameterType="Long" resultType="com.example.kanatales_deckmaker.deck.domain.Deck">

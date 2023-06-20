@@ -12,4 +12,6 @@ public interface CardRepository {
     List<Card> findAll();
 
     Card findById(Long id);
+
+    List<Card> findAllByKeyword(String keyword);
 }

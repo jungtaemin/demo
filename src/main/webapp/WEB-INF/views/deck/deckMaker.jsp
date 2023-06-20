@@ -54,7 +54,7 @@
   <!-- 우측 카드 선택 창 -->
   <div class="scroll-wrap" style="width:330px;height:700px;">
 
-    <input type="text" class="form-control" name="keyword" placeholder="카드명 검색">
+    <input type="text" class="form-control" name="keyword" onkeyup="searchKeyword(this.value);" id="deckMakerKeyword" placeholder="카드명 검색">
 
     <ul id="deckDbCardList" class="deckUl"></ul>
   </div>

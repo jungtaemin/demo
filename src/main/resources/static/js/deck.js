@@ -5,6 +5,7 @@ const dbCardList = () =>{
         type:"GET",
         url:"/card/api"
     }).done((cardList) =>{
+        $("#deckDbCardList").html("");
         cardList.forEach(cardList =>{
             $("#deckDbCardList").append(`<li class="card" style="width:80px"
                                       onclick="listClickOndeck('`+cardList.id+`','`+cardList.image+`','`+cardList.limit+`','`+cardList.point+`')">
@@ -15,6 +16,27 @@ const dbCardList = () =>{
         alert(e);
     });
 }
+
+const searchKeyword = keyword => {
+
+        $.ajax({
+            type:"GET",
+            url:"/card/api/search?keyword="+keyword
+        }).done((cardList) =>{
+            $("#deckDbCardList").html("");
+            cardList.forEach(cardList =>{
+                $("#deckDbCardList").append(`<li class="card" style="width:80px"
+                                          onclick="listClickOndeck('`+cardList.id+`','`+cardList.image+`','`+cardList.limit+`','`+cardList.point+`')">
+                                          <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
+                                          </li>`)
+            })
+        }).fail((e) =>{
+            alert(e);
+        });
+    
+
+}
+
 // 카드목록 ->카드 클릭시 덱목록으로 쌓이는 로직 - 최대 30장 제한
 const listClickOndeck = (id,imagePath,limit,point) => {
        let count  = $("#deckMakeClickList > span").length;

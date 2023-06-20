@@ -22,4 +22,9 @@ public class CardService {
     public Card findById(Long id){
         return cardRepository.findById(id);
     }
+
+    public List<Card> findAllByKeyword(String keyword){
+
+        return cardRepository.findAllByKeyword(keyword);
+    }
 }
