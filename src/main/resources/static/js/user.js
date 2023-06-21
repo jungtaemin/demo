@@ -13,8 +13,8 @@ const join = () => {
             contentType: "application/json"
         }).done((res) =>{
             location.href="/";
-        }).fail((res) =>{
-            console.log(res);
+        }).fail((errors) =>{
+            alert(errors.responseJSON[0].message);
         })
 }
 
