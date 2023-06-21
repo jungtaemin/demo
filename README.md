@@ -22,7 +22,24 @@
 * 덱 등록된 카드 초기화 - 휴지통 모양 버튼 클릭 시 등록되었던 카드가 모두 초기화된다.(제거)
 * 카드 클릭시 추가한 카드 상세보기 - 카드를 추가했을때 카드 상세도 같이 밑에 표출해서 카드를 구성할때 좀더 편하게 구성할 수 있게 기능을 추가하였다.
 * 그외 덱 만들기기능의 여러 제한및 고려사항들 적용 - 카드마다 제한매수만 넣게 적용,덱의 최대매수인 30장만 넣게 적용,덱이름 미입력시 에러얼럿,카드 추가시 덱총카드 카운팅 및 카드 포인트 카운팅 등등
+## AOP Validation + log
+![AOP](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/ecc7ecad-d9a5-40b1-aeb7-8303792d1482)
+* Validation은 폼형식에 전부 공통으로 쓸것이기 때문에 AOP로 만들어 메서드를 접근하기전에 BindingResult 타입이 있으면 파라미터를 가져와 에러처리.기본적으로 javascript폼에서 에러처리를 또 할것이기때문에 이 메서드에 넘어오는 것 자체가 비정상적인 접근(일단 내가 아는것은 POSTMAN..)이므로 로그도 남긴다.
+![log](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/08522048-a8a2-43d9-af30-c691d194c176)
+* 비정상적인 접근.이 사이트의 경우 일단 javascript폼에 validation을 했는데 서버까지 넘어와서 validation이 걸린경우.log를 남기고 해당 프로젝트에 로그를 쌓는다.
+* 현재는 프론트쪽폼에 validation이 안걸린 비정상적인 접근에만 로그를 남길예정.그 외에 어떤경우에 로그를 쌓아야할지 생각해봐야할 것 같다.
+* sentry  같은 로그수집 모니터링? 시스템 같은 것도 고려해볼 것.
 
+
+# 패치노트 v0.7(2023-06-21)
+## AOP로 Validation 체크
+![AOP](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/ecc7ecad-d9a5-40b1-aeb7-8303792d1482)
+* Validation은 폼형식에 전부 공통으로 쓸것이기 때문에 AOP로 만들어 메서드를 접근하기전에 BindingResult 타입이 있으면 파라미터를 가져와 에러처리.기본적으로 javascript폼에서 에러처리를 또 할것이기때문에 이 메서드에 넘어오는 것 자체가 비정상적인 접근(일단 내가 아는것은 POSTMAN..)이므로 로그도 남긴다.
+## LOG 기능
+![log](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/08522048-a8a2-43d9-af30-c691d194c176)
+* 비정상적인 접근.이 사이트의 경우 일단 javascript폼에 validation을 했는데 서버까지 넘어와서 validation이 걸린경우.log를 남기고 해당 프로젝트에 로그를 쌓는다.
+* 현재는 프론트쪽폼에 validation이 안걸린 비정상적인 접근에만 로그를 남길예정.그 외에 어떤경우에 로그를 쌓아야할지 생각해봐야할 것 같다.
+* sentry  같은 로그수집 모니터링? 시스템 같은 것도 고려해볼 것.
 
 # 패치노트 v0.6(2023-06-20)
 ## 덱 만들기 기능
