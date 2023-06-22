@@ -16,7 +16,7 @@ const dbCardList = () =>{
         alert(e);
     });
 }
-
+// 키워드 검색 로직
 const searchKeyword = keyword => {
 
         $.ajax({
@@ -181,9 +181,62 @@ const deckInCard = id =>{
         type:"GET",
         url:"/deck/api/list/"+id
     }).done((deckInCard)=>{
+        console.log(deckInCard);
+        $("#deckInCardList").html("");
+            $("#deckInCardList").append(`
+                <span class="deck-card"><img id="cardImg1" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image1+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg2" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image2+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg3" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image3+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg4" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image4+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg5" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image5+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg6" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image6+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg7" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image7+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg8" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image8+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg9" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image9+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg10" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image10+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg11" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image11+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg12" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image12+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg13" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image13+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg14" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image14+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg15" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image15+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg16" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image16+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg17" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image17+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg18" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image18+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg19" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image19+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg20" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image20+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg21" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image21+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg22" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image22+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg23" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image23+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg24" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image24+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg25" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image25+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg26" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image26+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg27" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image27+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg28" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image28+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg29" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image29+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg30" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image30+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>`);
 
     }).fail((e) =>{
         alert(e);
     })
 
+}
+
+
+
+// 5장 드로우 해보기 기능
+const drawSystem = () =>{
+    $("#drawModal").modal("show");
+    $("#drawModal-body").html("");
+
+    for (let index = 0; index < 5; index++) {
+        let randomNum = Math.floor( ( Math.random() * 30 + 1 ) );
+        console.log(randomNum);
+        let img = $("#cardImg"+randomNum).attr("src");
+        $("#drawModal-body").append(`<span class="deck-card">
+        <img  style="width: 13%;margin-bottom:7px;" src="`+img+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+        </span>`);
+    }
+    
+
+    
 }
