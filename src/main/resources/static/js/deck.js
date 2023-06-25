@@ -16,6 +16,9 @@ const dbCardList = () =>{
         alert(e);
     });
 }
+
+
+
 // 키워드 검색 로직
 const searchKeyword = keyword => {
 
@@ -162,6 +165,7 @@ const myDeckList = () =>{
         type:"GET",
         url:"/deck/api/list"
     }).done((myDeck)=>{
+        $("#myDeckList").html("");
         myDeck.forEach(deck =>{
             $("#myDeckList").append(`<span class="card" style="width:130px;height:160px" onclick="deckInCard(`+deck.id+`);"><span class="card-title">
             `+deck.name+`
@@ -177,9 +181,10 @@ const myDeckList = () =>{
 
 // 내 덱관리의 덱 클릭시 -> 덱 포함된 카드목록
 const deckInCard = id =>{
+    let deckId= id;
     $.ajax({
         type:"GET",
-        url:"/deck/api/list/"+id
+        url:"/deck/api/list/"+deckId
     }).done((deckInCard)=>{
         console.log(deckInCard);
         $("#deckInCardList").html("");
@@ -215,6 +220,7 @@ const deckInCard = id =>{
                 <span class="deck-card"><img id="cardImg29" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image29+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
                 <span class="deck-card"><img id="cardImg30" style="width: 9%;margin-bottom:7px;" src="`+deckInCard.image30+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>`);
 
+                $("#deckDelete").attr("onclick","deckDeleteById("+deckId+")");
     }).fail((e) =>{
         alert(e);
     })
@@ -236,7 +242,19 @@ const drawSystem = () =>{
         <img  style="width: 13%;margin-bottom:7px;" src="`+img+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
         </span>`);
     }
-    
 
-    
+}
+
+
+const deckDeleteById = deckId =>{
+    $.ajax({
+        type:"GET",
+        url:"/deck/api/list/delete/"+deckId
+    }).done(()=>{
+        alert("성공적으로 덱이 삭제되었습니다.");
+        myDeckList();
+        $("#deckInCardList").html("");
+    }).fail((e) =>{
+        alert("덱 삭제에 실패하였습니다.나중에 다시 시도해주세요.");
+    })
 }

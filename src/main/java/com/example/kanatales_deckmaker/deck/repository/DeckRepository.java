@@ -12,4 +12,6 @@ public interface DeckRepository {
     List<Deck> nameFindByUserId(Long id);
 
     Deck findById(Long id);
+
+    void deleteById(Long id);
 }

@@ -25,4 +25,8 @@ public class DeckService {
     public Deck findById(Long id){
         return deckRepository.findById(id);
     }
+
+    public void deleteById(Long id){
+        deckRepository.deleteById(id);
+    }
 }

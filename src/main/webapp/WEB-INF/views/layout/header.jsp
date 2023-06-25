@@ -47,6 +47,9 @@
             <li class="nav-item">
                              <a class="nav-link" href="/card">덱리</a>
             </li>
+            <li class="nav-item">
+                              <a class="nav-link" href="/gacha">가챠 시뮬</a>
+            </li>
 
     </ul>
   </div>

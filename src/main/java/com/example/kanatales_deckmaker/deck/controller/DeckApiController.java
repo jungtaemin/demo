@@ -48,4 +48,10 @@ public class DeckApiController {
         return new ResponseEntity<>(deckInCard,HttpStatus.OK);
     }
 
+    @GetMapping("/list/delete/{id}")
+    public ResponseEntity<Void> deckListDelete(@PathVariable Long id){
+        deckService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }

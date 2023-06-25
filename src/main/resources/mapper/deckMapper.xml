@@ -156,4 +156,14 @@
         WHERE
             id = #{id}
     </select>
+
+    <delete id="deleteById" parameterType="Long">
+        DELETE
+        FROM
+            deck
+        WHERE
+            id = #{id}
+
+    </delete>
+
 </mapper>
