@@ -2,8 +2,15 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '2.7.12'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id 'war'
 }
+apply plugin: 'war'  // 추가
 
+
+bootWar {
+	archiveBaseName="springboot" // 추가
+	archiveVersion="1.0.0-SNAPSHOT" // 추가
+}
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'

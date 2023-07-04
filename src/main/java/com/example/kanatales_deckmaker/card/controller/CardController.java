@@ -16,6 +16,6 @@ public class CardController {
 
     @GetMapping
     public String cardList(Model model){
-        return "/card/cardList";
+        return "card/cardList";
     }
 }

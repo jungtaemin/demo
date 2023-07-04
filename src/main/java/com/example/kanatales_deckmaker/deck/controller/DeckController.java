@@ -13,11 +13,11 @@ public class DeckController {
 
     @GetMapping("/make")
     public String deckMakeForm(){
-        return "/deck/deckMaker";
+        return "deck/deckMaker";
     }
     @GetMapping("/list")
     public String deckListForm(){
-        return "/deck/deckList";
+        return "deck/deckList";
     }
 
 

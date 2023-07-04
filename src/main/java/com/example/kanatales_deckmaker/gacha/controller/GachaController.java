@@ -12,6 +12,6 @@ public class GachaController {
 
     @GetMapping
     public String main(){
-        return "/gacha/gachaMain";
+        return "gacha/gachaMain";
     }
 }
