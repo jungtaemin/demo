@@ -28,9 +28,8 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '11'
-        distribution: 'temurin'
     - name: Grant execute permission for gradlew
-       run: chmod +x gradlew
+       run: chmod +x ./gradlew
        shell: bash
     - name: Build with Gradle
        run: ./gradlew clean build -x text
@@ -41,6 +40,9 @@ jobs:
       with:
           format: YYYY-MM-DDTHH-mm-ss
           utcOffset: "+09:00"
+    - name: Show Current Time
+      run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
+      shell: bash
 
       # EB에 CD 하기 위해 추가 작성
     - name: Generate deployment package
