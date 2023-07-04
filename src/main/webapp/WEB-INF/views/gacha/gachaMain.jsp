@@ -5,7 +5,10 @@
  
   <!-- 가챠 리스트 -->
   <div class="card" style="width:93%;height:280px;display:flex;margin-bottom:10px;">
-    <div class="card-body" id="gachaList">
+    <div class="card-body" id="gachaForm">
+      <div class="gacha-list">
+      </div>
+      <div class="gacha-bigImage"></div>
     </div>
   </div> 
 
@@ -25,8 +28,8 @@
             </div>
             <input type="number"/>
             <div id="gachaMenuBtnGroup" style="margin: 5px;" style="display:flex;justify-content: flex-end;margin-bottom: 10px;margin-right:90px;">
-              <button style="margin: 5px;" type="button"  onclick="drawSystem();" style="margin-right: 5px;"><img  src="/images/구매_btn.png"></button>
-              <button style="margin: 5px;" type="button"  id="deckDelete"><img  src="/images/취소_btn.png"></button>
+              <button style="margin: 5px;" type="button"  onclick="drawSystem();" style="margin-right: 5px;"><img  src="/images/구매_btn.PNG"></button>
+              <button style="margin: 5px;" type="button"  id="deckDelete"><img  src="/images/취소_btn.PNG"></button>
             </div>
           </div>
         </div>
@@ -44,6 +47,6 @@
 <%@ include file="../layout/footer.jsp"%>
 <script src="/js/gacha.js"></script>
 <script>
-dbCardList();
+gachaList();
 </script>
 </html>

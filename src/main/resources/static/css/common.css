@@ -71,3 +71,24 @@ body {
     background-color: #ffffff;
     border: #61554F solid 1px;
 }
+
+.gacha-list{
+    position: absolute;
+    top: 12%;
+    left: 0px;
+    width: 140px;
+    padding: 10px;
+    height: 88%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.gacha-bigImage{
+    position: absolute;
+    top: 127.5px;
+    right: 90px;
+    width: 700px;
+    height: 345px;
+}
