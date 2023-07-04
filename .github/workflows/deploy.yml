@@ -22,7 +22,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
@@ -41,6 +42,24 @@ jobs:
           format: YYYY-MM-DDTHH-mm-ss
           utcOffset: "+09:00"
 
+      # EB에 CD 하기 위해 추가 작성
+    - name: Generate deployment package
+        run: |
+          mkdir -p deploy
+          cp build/libs/*.war deploy/application.war
+          cp Procfile deploy/Procfile
+          cp -r .ebextensions deploy/.ebextensions
+          cd deploy && zip -r deploy.zip .
+    - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
+          application_name: kanatalesdeckmaker-beanstalk # 엘리스틱 빈스톡 애플리케이션 이름!
+          environment_name: Kanatalesdeckmaker-beanstalk-env # 엘리스틱 빈스톡 환경 이름!
+          version_label: Kanatalesdeckmaker-v1-${{steps.current-time.outputs.formattedTime}}
+          region: ap-northeast-2
+          deployment_package: deploy/deploy.zip
 
 
 
