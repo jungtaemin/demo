@@ -9,7 +9,7 @@ name: earth-github-action-test CD
 
 on:
   push:
-    branches: [ develop ] # develop에 push될 때 CD가 일어나도록 핸들링
+    branches: [ master ] # develop에 push될 때 CD가 일어나도록 핸들링
 
 jobs:
   build:
