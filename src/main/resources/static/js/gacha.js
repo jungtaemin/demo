@@ -15,7 +15,7 @@ const gachaList = () =>{
 }
 
 
-const gachaTypeClick = () =>{
-
+const gachaTypeClick = image =>{
+    $(".gacha-bigImage").css("background-image","url("+image+")");
     
 }
