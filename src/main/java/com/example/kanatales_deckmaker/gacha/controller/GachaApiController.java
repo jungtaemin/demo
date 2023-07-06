@@ -13,7 +13,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/gacha")
+@RequestMapping("/gacha/api")
 public class GachaApiController {
 
     private final GachaService gachaService;
