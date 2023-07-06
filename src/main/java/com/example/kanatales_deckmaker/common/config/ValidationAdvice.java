@@ -23,7 +23,6 @@ public class ValidationAdvice {
 
         for (Object arg : args) {
             if(arg instanceof BindingResult){
-                System.out.println("args:"+arg);
                 BindingResult bindingResult = (BindingResult) arg;
 
                 if(bindingResult.hasErrors()){
