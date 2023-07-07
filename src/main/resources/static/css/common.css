@@ -92,3 +92,8 @@ body {
     width: 700px;
     height: 345px;
 }
+
+.gacha-type-color{
+    background-color:rgba(0, 0, 0, 0.5);
+    position: absolute;
+}

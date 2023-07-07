@@ -28,8 +28,8 @@
             </div>
             <input type="number"/>
             <div id="gachaMenuBtnGroup" style="margin: 5px;" style="display:flex;justify-content: flex-end;margin-bottom: 10px;margin-right:90px;">
-              <button style="margin: 5px;" type="button"  onclick="drawSystem();" style="margin-right: 5px;"><img  src="/images/구매_btn.PNG"></button>
-              <button style="margin: 5px;" type="button"  id="deckDelete"><img  src="/images/취소_btn.PNG"></button>
+              <button style="margin: 5px;" type="button"  onclick="drawSystem();" style="margin-right: 5px;"><img  src="/images/구성품_확인_btn.PNG"></button>
+              <button style="margin: 5px;" type="button"  id="deckDelete"><img  src="/images/구매_하기_btn.PNG"></button>
             </div>
           </div>
         </div>
