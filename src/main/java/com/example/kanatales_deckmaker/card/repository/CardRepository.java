@@ -18,5 +18,5 @@ public interface CardRepository {
 
     List<Card> findAllPaging(PageDto<Card> pageDto);
 
-    int findAllCount();
+    int findAllCount(PageDto<Card> pageDto);
 }

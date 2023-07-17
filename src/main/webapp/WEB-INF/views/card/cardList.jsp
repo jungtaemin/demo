@@ -3,6 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 <div class="container mt-5">
   <form>
+  <%--  
   <div class="card" style="margin-bottom: 15px;">
     <div class="card-body">
         <table>
@@ -140,9 +141,10 @@
         </table>
     </div>
   </div>
+  --%>
   <div class="card">
     <div class="card-body">
-  <input type="text" class="form-control" name="keyword" placeholder="카드명 검색">
+  <input type="text" class="form-control" name="keyword" onkeyup="searchKeyword(this.value);" id="cardKeyword" placeholder="카드명 검색">
     </div>
   </div>
 </form>

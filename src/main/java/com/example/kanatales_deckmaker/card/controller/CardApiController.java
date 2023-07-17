@@ -19,8 +19,9 @@ public class CardApiController {
     private final CardService cardService;
 
     @GetMapping
-    public ResponseEntity<PageDto<Card>> findAllPaging(@RequestParam(value = "page",required = false,defaultValue = "1") int page){
-        return new ResponseEntity<>(cardService.findAllPaging(page), HttpStatus.OK);
+    public ResponseEntity<PageDto<Card>> findAllPaging(@RequestParam(value = "page",required = false,defaultValue = "1") int page,
+                                                       @RequestParam(value = "keyword",required = false,defaultValue = "") String keyword){
+        return new ResponseEntity<>(cardService.findAllPaging(page,keyword), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

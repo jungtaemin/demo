@@ -27,8 +27,11 @@ public class PageDto<T> {
     private int pageLimit = 5;
     private int blockLimit = 5;
 
-    public PageDto<T> startPageAndPageLimit(int page){
+    private String keyword;
+
+    public PageDto<T> setLimitAndKeyword(int page,String keyword){
          this.page = (page-1) * pageLimit;
+         this.keyword = keyword;
          return this;
     }
 

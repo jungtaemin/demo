@@ -29,10 +29,10 @@ public class CardService {
         return cardRepository.findAllByKeyword(keyword);
     }
 
-    public PageDto<Card> findAllPaging(int page){
-        PageDto<Card> pageDto = new PageDto<Card>().startPageAndPageLimit(page);
+    public PageDto<Card> findAllPaging(int page,String keyword){
+        PageDto<Card> pageDto = new PageDto<Card>().setLimitAndKeyword(page,keyword);
         List<Card> allPaging = cardRepository.findAllPaging(pageDto);
-        int allCount = cardRepository.findAllCount();
+        int allCount = cardRepository.findAllCount(pageDto);
         return pageDto.ofPageParam(page,allCount,allPaging);
     }
 }

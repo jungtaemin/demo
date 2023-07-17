@@ -39,17 +39,25 @@
             *
         from
             card
+        <if test="keyword != null and keyword !=''">
+            where
+                name like CONCAT('%',#{keyword},'%')
+        </if>
         order by
             id desc
         limit
             #{page},#{pageLimit}
     </select>
 
-    <select id="findAllCount" resultType="Int">
+    <select id="findAllCount" resultType="Int" parameterType="com.example.kanatales_deckmaker.common.dto.PageDto">
         select
             COUNT(id)
         from
             card
+        <if test="keyword != null and keyword !=''">
+            where
+            name like CONCAT('%',#{keyword},'%')
+        </if>
     </select>
 
 </mapper>
