@@ -87,10 +87,17 @@ body {
 
 .gacha-bigImage{
     position: absolute;
-    top: 127.5px;
-    right: 90px;
-    width: 700px;
-    height: 345px;
+    border:solid 2px;
+    border-color: #61554F;
+     top: 10px;
+     right: 90px;
+     width: 570px;
+     height: 260px;
+ }
+}
+
+.gacha-body{
+     position: flex;
 }
 
 .gacha-type-color{

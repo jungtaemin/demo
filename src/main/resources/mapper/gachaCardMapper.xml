@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kanatales_deckmaker.gachaCard.repository.GachaCardRepository">
+
+    <select id="findAll" resultType="com.example.kanatales_deckmaker.gachaCard.domain.GachaCard" parameterType="Long">
+        SELECT
+            *
+        FROM
+            gachaCard
+        WHERE
+            gacha_id = #{id}
+    </select>
+
+
+    <select id="findAllByRarityAndgachaId" parameterType="com.example.kanatales_deckmaker.gachaCard.domain.GachaCard" resultType="com.example.kanatales_deckmaker.gachaCard.domain.GachaCard">
+        SELECT
+            *
+        FROM
+            gachaCard
+
+        WHERE
+        <if test="rarity != null and rarity !=''">
+            rarity like CONCAT('%',#{rarity},'%')
+        AND
+        </if>
+            gacha_id = #{gacha_id}
+
+    </select>
+</mapper>
