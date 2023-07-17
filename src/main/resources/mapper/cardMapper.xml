@@ -33,4 +33,23 @@
             id = #{id}
     </select>
 
+
+    <select id="findAllPaging" parameterType="com.example.kanatales_deckmaker.common.dto.PageDto">
+        select
+            *
+        from
+            card
+        order by
+            id desc
+        limit
+            #{page},#{pageLimit}
+    </select>
+
+    <select id="findAllCount" resultType="Int">
+        select
+            COUNT(id)
+        from
+            card
+    </select>
+
 </mapper>

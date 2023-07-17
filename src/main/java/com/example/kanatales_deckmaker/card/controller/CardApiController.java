@@ -2,7 +2,9 @@ package com.example.kanatales_deckmaker.card.controller;
 
 import com.example.kanatales_deckmaker.card.domain.Card;
 import com.example.kanatales_deckmaker.card.service.CardService;
+import com.example.kanatales_deckmaker.common.dto.PageDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +19,8 @@ public class CardApiController {
     private final CardService cardService;
 
     @GetMapping
-    public ResponseEntity<List<Card>> findAll(){
-        return new ResponseEntity<>(cardService.findAll(), HttpStatus.OK);
+    public ResponseEntity<PageDto<Card>> findAllPaging(@RequestParam(value = "page",required = false,defaultValue = "1") int page){
+        return new ResponseEntity<>(cardService.findAllPaging(page), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

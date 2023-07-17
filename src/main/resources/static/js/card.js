@@ -1,24 +1,92 @@
 // 카드목록을 가져오는 로직
 const dbCardList = () =>{
-
+    $("#pagingGroup").html("");
+    $("#cardFindAll").html("");
     $.ajax({
         type:"GET",
         url:"/card/api"
-    }).done((cardList) =>{
-        console.log(cardList);
-        cardList.forEach(cardList =>{
-            $("#cardFindAll").append(`<div class="card" style="width:110px"
+    }).done((pagingCardList) =>{
+        console.log(pagingCardList);
+        pagingCardList.pageData.forEach(cardList =>{
+            $("#cardFindAll").append(`<div class="card" style="width:200px"
                                       onclick="dbCardDetail('`+cardList.id+`')">
                                       <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
                                       <div class="card-body"><div class="smallContentFont">`+cardList.name+`</div></div>
                                       </div>`)
         })
+        //이전버튼
+        if(pagingCardList.page <= 1){
+            $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>`);
+        }else{
+            let pageNum = pagingCardList.page -1;
+            $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="pageApi(`+pageNum+`);">이전</a></li>`);
+        }
+
+        //페이지버튼
+        for (var i = pagingCardList.startPage; i <= pagingCardList.endPage; i++) { // 배열 arr의 모든 요소의 인덱스(index)를 출력함.
+          if(pagingCardList.page == i){
+            $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link">`+i+`</a></li>`);
+          }else{
+            $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="pageApi(`+i+`);">`+i+`</a></li>`);
+          }
+        }
+
+        //다음버튼
+        if(pagingCardList.page >= pagingCardList.maxPage){
+            $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>`);
+        }else{
+            let pageNum = pagingCardList.page +1;
+            $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="pageApi(`+pageNum+`);">다음</a></li>`);
+        }
+
     }).fail((e) =>{
         console.log("error:"+e);
     });
 }
 
+const pageApi = pageNum =>{
+        $("#pagingGroup").html("");
+        $("#cardFindAll").html("");
+        $.ajax({
+            type:"GET",
+            url:"/card/api?page="+pageNum
+        }).done((pagingCardList) =>{
+            console.log(pagingCardList);
+            pagingCardList.pageData.forEach(cardList =>{
+                $("#cardFindAll").append(`<div class="card" style="width:200px"
+                                          onclick="dbCardDetail('`+cardList.id+`')">
+                                          <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
+                                          <div class="card-body"><div class="smallContentFont">`+cardList.name+`</div></div>
+                                          </div>`)
+            })
+            //이전버튼
+            if(pagingCardList.page <= 1){
+                $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>`);
+            }else{
+                let pageNum = pagingCardList.page -1;
+                $("#pagingGroup").append(`<li class="page-item"><a class="page-link"onclick="pageApi(`+pageNum+`);">이전</a></li>`);
+            }
 
+            //페이지버튼
+            for (var i = pagingCardList.startPage; i <= pagingCardList.endPage; i++) { // 배열 arr의 모든 요소의 인덱스(index)를 출력함.
+              if(pagingCardList.page == i){
+                $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link">`+i+`</a></li>`);
+              }else{
+                $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="pageApi(`+i+`);">`+i+`</a></li>`);
+              }
+            }
+
+            //다음버튼
+            if(pagingCardList.page >= pagingCardList.maxPage){
+                $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>`);
+            }else{
+                let pageNum = pagingCardList.page +1;
+                $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="pageApi(`+pageNum+`);">다음</a></li>`);
+            }
+        }).fail((e) =>{
+            console.log(e);
+        });
+}
 
 // 카드 상세 정보 표출
 const dbCardDetail = id =>{

@@ -45,10 +45,10 @@
                              <a class="nav-link" href="/card">카드DB</a>
             </li>
             <li class="nav-item">
-                             <a class="nav-link" href="/card">덱리</a>
+                              <a class="nav-link" href="/gacha">가챠 시뮬</a>
             </li>
             <li class="nav-item">
-                              <a class="nav-link" href="/gacha">가챠 시뮬</a>
+                              <a class="nav-link" style="cursor:pointer" onclick="alert('준비중 입니다.')">덱리(준비중)</a>
             </li>
 
     </ul>
