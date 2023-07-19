@@ -1,6 +1,6 @@
 ![kanaMain](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8cf601c2-2766-4761-a15d-3da499253cb0)
 # kanatales_deckmaker
-
+사이트 주소 : http://kanadeckmaker.kro.kr/
 * 구현 예정
   * **카나테일즈 카드 DB** - 카드 데이터 필터링 검색,상세정보(2023-06-15 구현중)
   * ~~**카나테일즈 카드 덱 만들기** - 카드 데이터에서 30개로 덱구성후 내 계정에 덱 생성기능(덱 전체 코스트나 여러 덱 구성후 공유 기능까지 생각중)~~(2023-06-20 구현완료)
