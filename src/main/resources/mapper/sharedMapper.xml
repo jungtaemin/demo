@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kanatales_deckmaker.shared.repository.SharedRepository">
+
+    <select id="findPagingAll" resultType="com.example.kanatales_deckmaker.shared.domain.Shared" parameterType="com.example.kanatales_deckmaker.common.dto.PageDto">
+        SELECT
+            *
+        FROM
+            shared
+        <if test="keyword != null and keyword !=''">
+        WHERE
+            title like CONCAT('%',#{keyword},'%')
+        </if>
+        order by
+            id desc
+        limit
+            #{page},#{pageLimit}
+    </select>
+
+    <select id="findAllCount" resultType="Int" parameterType="com.example.kanatales_deckmaker.common.dto.PageDto">
+        select
+            COUNT(id)
+        from
+            shared
+        <if test="keyword != null and keyword !=''">
+            where
+            title like CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
+
+    <insert id="saveShared" parameterType="com.example.kanatales_deckmaker.shared.domain.Shared">
+        insert into
+            shared
+            (title,
+            contents,
+            deck_id,
+            writer,
+            create_date,
+            views
+            )
+            values
+            (#{title},
+            #{contents},
+            #{deckId},
+            #{writer},
+            NOW(),
+            0
+            )
+    </insert>
+</mapper>

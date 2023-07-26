@@ -48,7 +48,7 @@
                               <a class="nav-link" href="/gacha">가챠 시뮬</a>
             </li>
             <li class="nav-item">
-                              <a class="nav-link" style="cursor:pointer" onclick="alert('준비중 입니다.')">덱리(준비중)</a>
+                              <a class="nav-link" href="/shared">공유 덱 리스트(제작중)</a>
             </li>
 
     </ul>

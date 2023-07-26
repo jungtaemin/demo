@@ -36,7 +36,7 @@ public class PageDto<T> {
     }
 
     // @Param 전체count+page(범용성있게 쓰려고 만듬)
-    public PageDto<T> ofPageParam(int page, int boardCount, List<T> cardList){
+    public PageDto<T> ofPageParam(int page, int boardCount, List<T> pagingList){
         this.page = page;
         // 전체 페이지 갯수 계산(10/3=3.33333 => 4)
         this.maxPage = (int) (Math.ceil((double) boardCount / pageLimit));
@@ -47,7 +47,7 @@ public class PageDto<T> {
         if (this.endPage > this.maxPage) {
             this.endPage = this.maxPage;
         }
-        this.pageData = cardList;
+        this.pageData = pagingList;
         return this;
     }
 }
