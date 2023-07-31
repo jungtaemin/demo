@@ -1,7 +1,32 @@
 ![kanaMain](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8cf601c2-2766-4761-a15d-3da499253cb0)
 # kanatales_deckmaker
-사이트 주소 : http://kanadeckmaker.kro.kr/
-* 구현 예정
+사이트 주소 : http://kanadeckmaker.kro.kr/  
+카나테일즈라는 모바일 카드게임을 하다가 인기가 별로 없는 게임이라서 편의성을 주는 사이트가 없어서 있으면
+좋겠다는 생각으로 만들기 시작했습니다.카나테일즈 카드를 사이트에서 확인해보고 덱을 사이트에서 만들어 보
+거나 다른사람들의 덱을 확인가능한 사이트로 최종적으로 만들예정입니다.
+# 사용 기술
+**백엔드**
+
+- Java 11 openjdk
+- Springboot
+- AWS
+- GitHub Actions(CI/CD)
+- SpringBoot Security
+- MyBatis
+
+**프론트엔드**
+- Jsp
+- Bootstrap 5
+- Html/css
+- JQuery
+  
+**Build tool**
+- Gradle
+
+**Data base**
+- Mysql
+
+# 구현 예정
   * ~~**카나테일즈 카드 DB** - 카드 데이터 필터링 검색,상세정보~~(2023-06-26 구현완료)
   * ~~**카나테일즈 카드 덱 만들기** - 카드 데이터에서 30개로 덱구성후 내 계정에 덱 생성기능(덱 전체 코스트나 여러 덱 구성후 공유 기능까지 생각중)~~(2023-06-20 구현완료)
     ~~* 카드 30장으로 제한~~
@@ -73,6 +98,13 @@
 ~~* sentry  같은 로그수집 모니터링? 시스템 같은 것도 고려해볼 것.~~
 
 
+# 패치노트 v1.4(2023-07-31)
+## 공유 덱 리스트
+![shared2](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/7bca78cc-77b4-410b-ba9e-ec094c74564d)
+* 공유 덱 등록 시 덱 선택 구현 - 덱 만들기에서 만들어둔 덱목록이 출력된다.
+* 등록시 게시물형식으로 제목 글쓴이 날짜 조회 출력 - 클릭시 해당 게시물 페이지로 이동
+* 공유 덱 게시물 상세페이지 구현 - 제목,글내용 등의 정보와 함께 덱 등록시 선택했던 덱 데이터(최대30장)를 보기편하게 이미지형식으로 불러옴
+* 참고사항) 공유 덱 등록후 페이지reload 구현해야함. 댓글기능,조회수 기능 구현해야함
 # 패치노트 v1.3(2023-07-26)
 ## 공유 덱 리스트
 ![sharedList](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/b4e6bdd7-bcc8-4fd0-8f44-b85bdf5008b7)
