@@ -56,11 +56,11 @@ const sharedList = () =>{
     }).done((sharedList) =>{
         console.log(sharedList);
         sharedList.pageData.forEach(shared =>{
-            $("#sharedTableList").append(`<td>`+shared.title+`</td>
+            $("#sharedTableList").append(`<tr onclick="sharedDetail(`+shared.id+`);"><td>`+shared.title+`</td>
                                           <td>`+shared.writer+`</td>
                                           <td>`+shared.createDate+`</td>
                                           <td>`+shared.views+`</td>
-                                          `)
+                                          </tr>`)
         })
         //이전버튼
         if(sharedList.page <= 1){
@@ -126,6 +126,7 @@ const deckCheck = (deckClick,id) =>{
 
 }
 
+// 공유덱 저장
 const sharedDeckSave = () =>{
     let data = {
         "title" : $("#title").val(),
@@ -143,4 +144,57 @@ const sharedDeckSave = () =>{
             }).fail((e) =>{
                 alert(e);
             })
+}
+
+// 상세 페이지로 이동
+const sharedDetail = id =>{
+    location.href ="/shared/"+id;
+}
+
+const sharedDetailAjax = id =>{
+
+        $.ajax({
+            type:"GET",
+            url:"/shared/api/"+id
+        }).done((sharedDetailData)=>{
+            console.log(sharedDetailData);
+                $("#detail-title").html(`<div style="font-size: 19px;font-weight: bold;">`+sharedDetailData.title+`</div>`);
+                $("#detail-createDate").html(sharedDetailData.createDate);
+                $("#detail-writer").html(sharedDetailData.writer);
+                $("#detail-views").html("조회 수 "+sharedDetailData.views);
+                $("#detail-deck").html(`<span class="deck-card"><img id="cardImg1" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image1+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg2" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image2+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg3" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image3+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg4" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image4+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg5" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image5+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg6" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image6+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg7" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image7+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg8" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image8+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg9" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image9+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg10" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image10+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg11" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image11+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg12" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image12+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg13" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image13+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg14" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image14+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg15" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image15+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg16" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image16+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg17" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image17+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg18" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image18+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg19" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image19+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg20" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image20+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg21" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image21+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg22" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image22+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg23" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image23+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg24" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image24+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg25" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image25+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg26" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image26+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg27" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image27+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg28" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image28+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg29" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image29+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
+                <span class="deck-card"><img id="cardImg30" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image30+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>`);
+                $("#detail-contents").html(sharedDetailData.contents);
+            }).fail((e) =>{
+            alert(e);
+        })
+
 }

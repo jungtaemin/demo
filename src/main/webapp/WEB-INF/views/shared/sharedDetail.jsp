@@ -6,7 +6,21 @@
 
   <div class="card">
     <div class="card-body">
-        <table id="sharedDetailTable">
+        <table class="table-hover" id="sharedDetailTable" style="width:1100px">
+          <tr class="board-title">
+            <td id="detail-title" style="width:900px";></td>
+            <td id="detail-createDate" style="width:200px"></td>
+          </tr>
+          <tr class="board-writer">
+            <td id="detail-writer"></td>
+            <td id="detail-views"></td>
+          </tr>
+          <tr>
+            <td id="detail-deck" style="border: 2px solid black;"></td>
+          </tr>
+          <tr>
+            <td id="detail-contents"></td>
+          </tr>
         </table>
     </div>
   </div>
@@ -22,9 +36,7 @@
             <th>조회</th>
           </tr>
         </thead>
-        <tbody>
-          <tr id="sharedTableList">
-          </tr>
+        <tbody id="sharedTableList">
         </tbody>
       </table>
     </div>
@@ -85,6 +97,8 @@
 <%@ include file="../layout/footer.jsp"%>
 <script src="/js/shared.js"></script>
 <script>
+let deckId = [[${shared_id}]];
+sharedDetailAjax(deckId);
 sharedList();
 </script>
 </html>

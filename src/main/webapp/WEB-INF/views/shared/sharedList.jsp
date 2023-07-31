@@ -14,9 +14,7 @@
             <th>조회</th>
           </tr>
         </thead>
-        <tbody>
-          <tr id="sharedTableList">
-          </tr>
+        <tbody id="sharedTableList">
         </tbody>
       </table>
     </div>

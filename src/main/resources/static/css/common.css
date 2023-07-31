@@ -104,3 +104,12 @@ body {
     background-color:rgba(0, 0, 0, 0.5);
     position: absolute;
 }
+
+.board-title {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.board-writer {
+    border-bottom: 1px solid #eee;
+}

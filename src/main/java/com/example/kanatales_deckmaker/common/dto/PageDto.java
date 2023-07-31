@@ -35,6 +35,11 @@ public class PageDto<T> {
          return this;
     }
 
+    public PageDto<T> setPageLimit(int limit){
+        this.pageLimit = limit;
+        return this;
+    }
+
     // @Param 전체count+page(범용성있게 쓰려고 만듬)
     public PageDto<T> ofPageParam(int page, int boardCount, List<T> pagingList){
         this.page = page;

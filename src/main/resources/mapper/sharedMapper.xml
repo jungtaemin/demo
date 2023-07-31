@@ -30,6 +30,77 @@
         </if>
     </select>
 
+    <select id="findSharedAndDeckById" resultType="com.example.kanatales_deckmaker.shared.dto.ResponseSharedDetail" parameterType="Long">
+        select
+            sh.*,
+            d.name as deck_name,
+            d.card1,
+            d.card2,
+            d.card3,
+            d.card4,
+            d.card5,
+            d.card6,
+            d.card7,
+            d.card8,
+            d.card9,
+            d.card10,
+            d.card11,
+            d.card12,
+            d.card13,
+            d.card14,
+            d.card15,
+            d.card16,
+            d.card17,
+            d.card18,
+            d.card19,
+            d.card20,
+            d.card21,
+            d.card22,
+            d.card23,
+            d.card24,
+            d.card25,
+            d.card26,
+            d.card27,
+            d.card28,
+            d.card29,
+            d.card30,
+            d.image1,
+            d.image2,
+            d.image3,
+            d.image4,
+            d.image5,
+            d.image6,
+            d.image7,
+            d.image8,
+            d.image9,
+            d.image10,
+            d.image11,
+            d.image12,
+            d.image13,
+            d.image14,
+            d.image15,
+            d.image16,
+            d.image17,
+            d.image18,
+            d.image19,
+            d.image20,
+            d.image21,
+            d.image22,
+            d.image23,
+            d.image24,
+            d.image25,
+            d.image26,
+            d.image27,
+            d.image28,
+            d.image29,
+            d.image30
+        from
+            shared sh
+        join deck d on sh.deck_id = d.id
+        where
+            sh.id = #{id}
+    </select>
+
 
     <insert id="saveShared" parameterType="com.example.kanatales_deckmaker.shared.domain.Shared">
         insert into
