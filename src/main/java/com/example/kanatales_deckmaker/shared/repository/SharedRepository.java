@@ -15,4 +15,5 @@ public interface SharedRepository {
     void saveShared(Shared shared);
 
     ResponseSharedDetail findSharedAndDeckById(Long id);
+    void setViewsCount(ResponseSharedDetail responseSharedDetail);
 }

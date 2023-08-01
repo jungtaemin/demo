@@ -80,4 +80,10 @@ public class ResponseSharedDetail {
     private String image28;
     private String image29;
     private String image30;
+
+    // 조회수 증가 로직
+    public ResponseSharedDetail viewsCount(){
+        this.views = this.views +1;
+        return this;
+    }
 }

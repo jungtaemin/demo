@@ -1,6 +1,6 @@
 package com.example.kanatales_deckmaker.shared.service;
 
-import com.example.kanatales_deckmaker.common.dto.PageDto;
+import com.example.kanatales_deckmaker.common.dto.*;
 import com.example.kanatales_deckmaker.deck.domain.Deck;
 import com.example.kanatales_deckmaker.shared.domain.Shared;
 import com.example.kanatales_deckmaker.shared.dto.ResponseSharedDetail;
@@ -18,8 +18,8 @@ public class SharedService {
 
 
     public PageDto<Shared> findPagingAll(int page,String keyword){
-        PageDto<Shared> pageDto = new PageDto<Shared>().setLimitAndKeyword(page, keyword);
-        pageDto.setPageLimit(10);
+        PageDto<Shared> sharedPageDto = new BoardPageFactory<Shared>().create();
+        PageDto<Shared> pageDto = sharedPageDto.setLimitAndKeyword(page, keyword);
         List<Shared> pagingAll = sharedRepository.findPagingAll(pageDto);
         int allCount = sharedRepository.findAllCount(pageDto);
         return pageDto.ofPageParam(page, allCount, pagingAll);
@@ -27,7 +27,10 @@ public class SharedService {
 
 
     public ResponseSharedDetail detail(Long id){
-       return sharedRepository.findSharedAndDeckById(id);
+
+        ResponseSharedDetail sharedDetail= sharedRepository.findSharedAndDeckById(id);
+        sharedRepository.setViewsCount(sharedDetail.viewsCount());
+        return sharedDetail;
     }
 
     public void saveShared(Shared shared){

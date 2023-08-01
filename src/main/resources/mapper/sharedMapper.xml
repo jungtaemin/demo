@@ -101,6 +101,17 @@
             sh.id = #{id}
     </select>
 
+    <update id="setViewsCount" parameterType="com.example.kanatales_deckmaker.shared.dto.ResponseSharedDetail">
+       UPDATE
+            shared
+       SET
+            views = #{views}
+       WHERE
+            id = #{id}
+
+
+    </update>
+
 
     <insert id="saveShared" parameterType="com.example.kanatales_deckmaker.shared.domain.Shared">
         insert into

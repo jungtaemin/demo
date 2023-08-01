@@ -1,20 +1,13 @@
 package com.example.kanatales_deckmaker.common.dto;
 
-import com.example.kanatales_deckmaker.card.domain.Card;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Setter
 public class PageDto<T> {
-    /** 범용성있는 page정보 생성 dto **/
-
 
     private int page;
     private int maxPage;
@@ -24,15 +17,15 @@ public class PageDto<T> {
 
     private List<T> pageData;
 
-    private int pageLimit = 5;
-    private int blockLimit = 5;
+    private int pageLimit;
+    private int blockLimit;
 
     private String keyword;
 
     public PageDto<T> setLimitAndKeyword(int page,String keyword){
-         this.page = (page-1) * pageLimit;
-         this.keyword = keyword;
-         return this;
+        this.page = (page-1) * pageLimit;
+        this.keyword = keyword;
+        return this;
     }
 
     public PageDto<T> setPageLimit(int limit){

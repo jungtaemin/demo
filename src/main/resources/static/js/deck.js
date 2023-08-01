@@ -135,6 +135,7 @@ const deckSaveJson = () =>{
         url:"/deck/api",
         contentType:"application/json",
         data:JSON.stringify(deck)
+        data:JSON.stringify(deck)
     }).done(() =>{
         location.href = "/deck/list";
     }).fail((e) =>{

@@ -41,7 +41,9 @@
       </table>
     </div>
   </div>
+  <sec:authorize access="isAuthenticated()">
   <div style="height:40px"><button type="button" class="btn btn-primary" style="float: right;" onclick="clickSharedSave();">공유 덱 등록</button></div>
+  </sec:authorize>
   <div><ul class="pagination" id="pagingGroup" style="cursor:pointer;justify-content:center;"></ul></div>
 
 
@@ -99,6 +101,5 @@
 <script>
 let deckId = [[${shared_id}]];
 sharedDetailAjax(deckId);
-sharedList();
 </script>
 </html>

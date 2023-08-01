@@ -5,10 +5,10 @@ const searchKeyword = keyword => {
             url:"/shared/api?keyword="+keyword
         }).done((pagingCardList) =>{
             $("#pagingGroup").html("");
-            $("#sharedFindAll").html("");
+            $("#sharedTableList").html("");
             console.log(pagingCardList);
             pagingCardList.pageData.forEach(cardList =>{
-                $("#sharedFindAll").append(`<div class="card" style="width:200px"
+                $("#sharedTableList").append(`<div class="card" style="width:200px"
                                           onclick="dbCardDetail('`+cardList.id+`')">
                                           <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
                                           <div class="card-body"><div class="smallContentFont">`+cardList.name+`</div></div>
@@ -49,7 +49,7 @@ const searchKeyword = keyword => {
 // 공유덱목록을 가져오는 로직
 const sharedList = () =>{
     $("#pagingGroup").html("");
-    $("#sharedFindAll").html("");
+    $("#sharedTableList").html("");
     $.ajax({
         type:"GET",
         url:"/shared/api"
@@ -92,7 +92,7 @@ const sharedList = () =>{
     });
 }
 
-// 덱 공유 등록 모달 덱선택 리스트
+// 덱 공유 등록 모달 and 덱선택 리스트
 const clickSharedSave  = () =>{
     $("#saveModal").modal("show");
     $("#saveModal-deckList").html("");
@@ -141,6 +141,8 @@ const sharedDeckSave = () =>{
                 contentType:"application/json"
             }).done(()=>{
                 alert("등록되었습니다.");
+                $ ('#saveModal').modal ('hide');
+                sharedList();
             }).fail((e) =>{
                 alert(e);
             })
@@ -193,6 +195,7 @@ const sharedDetailAjax = id =>{
                 <span class="deck-card"><img id="cardImg29" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image29+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>
                 <span class="deck-card"><img id="cardImg30" style="width: 9%;margin-bottom:7px;" src="`+sharedDetailData.image30+`" onerror="this.src='/images/deckMaker_defaultImg.png'"></span>`);
                 $("#detail-contents").html(sharedDetailData.contents);
+                sharedList();
             }).fail((e) =>{
             alert(e);
         })

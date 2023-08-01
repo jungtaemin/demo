@@ -97,7 +97,25 @@
 ~~* 현재는 프론트쪽폼에 validation이 안걸린 비정상적인 접근에만 로그를 남길예정.그 외에 어떤경우에 로그를 쌓아야할지 생각해봐야할 것 같다.~~
 ~~* sentry  같은 로그수집 모니터링? 시스템 같은 것도 고려해볼 것.~~
 
-
+# 패치노트 v1.5(2023-08-02)
+## 공유 덱 리스트
+* 공유 덱 등록시 모달 미닫힘 및 게시글 목록 reload동작안함 수정
+* 공유 덱 등록이 로그인 안하고도 등록모달이 뜸 -> 로그인시에만 공유 덱 등록 버튼이 보이게 수정
+* 게시글 조회수 기능 추가
+* 코드개선 - pageDto를 팩토리메서드패턴을 사용하는것으로 교체.  
+* **이전코드**
+```java
+PageDto<Shared> pageDto = new PageDto<Shared>().setLimitAndKeyword(page, keyword);
+pageDto.setPageLimit(10);
+```
+* **팩토리메서드패턴적용**
+```java
+PageDto<Shared> sharedPageDto = new BoardPageFactory<Shared>().create();
+PageDto<Shared> pageDto = sharedPageDto.setLimitAndKeyword(page, keyword);
+```
+* 이전 코드의 경우 pageLimit값을 set으로 넣어줘서 카드Paging과 게시글paging을 다른값으로 세팅했다.그러나 매번 페이징 페이지를 만들때마다 set으로 넣어줘야해서 헷갈릴 수도 있고 다른사람이
+ 사용하기에도 힘든 코드라고 생각되었다.팩토리메서드패턴으로 카드페이징은 CardPageFactory로 게시글페이징은 BoardPageFactory로 create함수를 실행하면
+각각의 맞는 설정으로 셋팅된 객체를 반환한다.
 # 패치노트 v1.4(2023-07-31)
 ## 공유 덱 리스트
 ![shared2](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/7bca78cc-77b4-410b-ba9e-ec094c74564d)
