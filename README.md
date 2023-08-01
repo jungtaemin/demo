@@ -110,8 +110,7 @@ pageDto.setPageLimit(10);
 ```
 * **팩토리메서드패턴적용**
 ```java
-PageDto<Shared> sharedPageDto = new BoardPageFactory<Shared>().create();
-PageDto<Shared> pageDto = sharedPageDto.setLimitAndKeyword(page, keyword);
+PageDto<Shared> pageDto = new BoardPageFactory<Shared>().create().setLimitAndKeyword(page, keyword);
 ```
 * 이전 코드의 경우 pageLimit값을 set으로 넣어줘서 카드Paging과 게시글paging을 다른값으로 세팅했다.그러나 매번 페이징 페이지를 만들때마다 set으로 넣어줘야해서 헷갈릴 수도 있고 다른사람이
  사용하기에도 힘든 코드라고 생각되었다.팩토리메서드패턴으로 카드페이징은 CardPageFactory로 게시글페이징은 BoardPageFactory로 create함수를 실행하면
