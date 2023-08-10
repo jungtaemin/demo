@@ -20,8 +20,9 @@ public class CardApiController {
 
     @GetMapping
     public ResponseEntity<PageDto<Card>> findAllPaging(@RequestParam(value = "page",required = false,defaultValue = "1") int page,
-                                                       @RequestParam(value = "keyword",required = false,defaultValue = "") String keyword){
-        return new ResponseEntity<>(cardService.findAllPaging(page,keyword), HttpStatus.OK);
+                                                       @RequestParam(value = "keyword",required = false,defaultValue = "") String keyword,
+                                                       @RequestParam(value = "sort",defaultValue = "",required = false) String sort){
+        return new ResponseEntity<>(cardService.findAllPaging(page,keyword,sort), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")

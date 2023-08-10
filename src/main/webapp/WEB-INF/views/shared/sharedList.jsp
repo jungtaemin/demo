@@ -2,12 +2,19 @@
 
 <%@ include file="../layout/header.jsp"%>
 <div class="container mt-5">
+    <%-- Option --%>
+    <div>
+        <button type="button" class="btn btn-primary" style="margin-bottom:5px" onclick="viewsBySearchKeyword();">조회순</button>
+        <button type="button" class="btn btn-secondary" style="margin-bottom:5px" onclick="latestBySearchKeyword();">최신순</button>
+    </div>
+
     <%-- 목록 --%>
   <div class="card">
     <div class="card-body">
     <table class="table table-dark table-hover">
         <thead>
           <tr>
+            <th></th>
             <th>제목</th>
             <th>글쓴이</th>
             <th>날짜</th>

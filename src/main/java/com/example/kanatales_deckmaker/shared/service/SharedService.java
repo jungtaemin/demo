@@ -17,8 +17,8 @@ public class SharedService {
     private final SharedRepository sharedRepository;
 
 
-    public PageDto<Shared> findPagingAll(int page,String keyword){
-        PageDto<Shared> pageDto = new BoardPageFactory<Shared>().create().setLimitAndKeyword(page, keyword);
+    public PageDto<Shared> findPagingAll(int page,String keyword,String sort){
+        PageDto<Shared> pageDto = new BoardPageFactory<Shared>().create().setLimitAndKeyword(page, keyword,sort);
         List<Shared> pagingAll = sharedRepository.findPagingAll(pageDto);
         int allCount = sharedRepository.findAllCount(pageDto);
         return pageDto.ofPageParam(page, allCount, pagingAll);

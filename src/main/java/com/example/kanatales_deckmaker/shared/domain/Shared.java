@@ -21,5 +21,7 @@ public class Shared {
     private String createDate;
     private Integer views;
 
+    private Integer rowNum;
+
 
 }

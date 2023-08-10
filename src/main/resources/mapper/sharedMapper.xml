@@ -6,15 +6,27 @@
 
     <select id="findPagingAll" resultType="com.example.kanatales_deckmaker.shared.domain.Shared" parameterType="com.example.kanatales_deckmaker.common.dto.PageDto">
         SELECT
-            *
+        <if test="sort == null or sort == 'latest'">
+            ROW_NUMBER() OVER(ORDER BY id desc) AS row_num,
+        </if>
+        <if test="sort == 'views'">
+            ROW_NUMBER() OVER(ORDER BY views desc) AS row_num,
+        </if>
+            shared.*
         FROM
             shared
         <if test="keyword != null and keyword !=''">
         WHERE
             title like CONCAT('%',#{keyword},'%')
         </if>
-        order by
-            id desc
+        <if test="sort == null or sort == 'latest'">
+            order by
+                id desc
+        </if>
+        <if test="sort == 'views'">
+            order by
+                views desc
+        </if>
         limit
             #{page},#{pageLimit}
     </select>

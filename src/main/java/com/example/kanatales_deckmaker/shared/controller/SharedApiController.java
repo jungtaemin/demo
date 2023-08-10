@@ -22,9 +22,10 @@ public class SharedApiController {
 
     @GetMapping
     public ResponseEntity<PageDto> pagingDeck(@RequestParam(value = "page",defaultValue = "1",required = false) int page,
-                                              @RequestParam(value = "keyword",defaultValue = "",required = false) String keyword){
+                                              @RequestParam(value = "keyword",defaultValue = "",required = false) String keyword,
+                                              @RequestParam(value = "sort",defaultValue = "latest",required = false)String sort){
 
-        PageDto<Shared> pagingAll = sharedService.findPagingAll(page, keyword);
+        PageDto<Shared> pagingAll = sharedService.findPagingAll(page, keyword,sort);
 
         return new ResponseEntity<>(pagingAll, HttpStatus.OK);
     }

@@ -146,7 +146,7 @@ const dbCardDetail = id =>{
         $("#dbRarityType").html(dbCardDetail.rarityType);
         $("#dbPoint").html(dbCardDetail.point);
         $("#dbEpisode").html(dbCardDetail.episode);
-         $("#dbLimit").html(dbCardDetail.limit);
+         $("#dbLimit").html(dbCardDetail.limitCount);
         $("#dbCardType").html(dbCardDetail.cardType);
         if(dbCardDetail.tag1 =="" || dbCardDetail.tag1 == null){
             $("#dbTag").html("없음");

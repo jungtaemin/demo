@@ -43,7 +43,7 @@ public class Card {
     /** 이미지 경로 */
     private String image;
     /** 제한 매수 */
-    private int limit;
+    private int limitCount;
 
     /** 만약 사용자가 카드 등록을 할경우.. 기본적으로는 사이트 자체 db로 카드데이터를 가져올예정이라 미사용 */
     private String createDate;

@@ -26,7 +26,22 @@
 
     <select id="findById" parameterType="Long">
         select
-            *
+            id,
+            name,
+            size,
+            atk,
+            def,
+            hp,
+            effect,
+            IFNULL(tag1,'') AS tag1,
+            IFNULL(tag2,'') AS tag2,
+            rarity_type,
+            team_type,
+            card_type,
+            point,
+            episode,
+            limit_count,
+            image
         from
             card
         where

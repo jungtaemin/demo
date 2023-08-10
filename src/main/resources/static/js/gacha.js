@@ -25,6 +25,8 @@ const gachaTypeClick = (id,image) =>{
     }else{
         $(".gacha-bigImage").css("background-image","url("+image+")");
         gachaClick = id;
+        $("#gachaResult").html("");
+        $("#gachaNum").val(1);
     }
 
     gachaId = [];
@@ -48,52 +50,57 @@ const gachaTypeClick = (id,image) =>{
 // 구성품확인 리스트
 const gachaCardListBtn= () =>{
 
-    $("#gachaModal").modal("show");
-    $(".card-rarity").html("");
+    if(gachaClick ==null){
+        alert("가챠 종류를 선택해주세요");
+    }else{
+           $("#gachaModal").modal("show");
+            $(".card-rarity").html("");
 
-    let gachaId= gachaClick;
-    $.ajax({
-        type:"GET",
-        url:"/gachaCard/api/"+gachaId
-    }).done(gachaList =>{
-         gachaList.forEach(gachaCard =>{
-              console.log(gachaCard.rarity);
-              if(gachaCard.rarity == "유니크"){
-                console.log("1")
-                $("#card-unique").append(`<span class="gacha-card">
-                <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
-                </span>`);
-                }else if(gachaCard.rarity == "레어"){
-                    console.log("2")    
-                    $("#card-rare").append(`<span class="gacha-card">
-                    <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
-                    </span>`);
+            let gachaId= gachaClick;
+            $.ajax({
+                type:"GET",
+                url:"/gachaCard/api/"+gachaId
+            }).done(gachaList =>{
+                 gachaList.forEach(gachaCard =>{
+                      console.log(gachaCard.rarity);
+                      if(gachaCard.rarity == "유니크"){
+                        console.log("1")
+                        $("#card-unique").append(`<span class="gacha-card">
+                        <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+                        </span>`);
+                        }else if(gachaCard.rarity == "레어"){
+                            console.log("2")
+                            $("#card-rare").append(`<span class="gacha-card">
+                            <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+                            </span>`);
 
-                }else if(gachaCard.rarity == "슈페리어"){
-                    console.log("3")    
-                    $("#card-superior").append(`<span class="gacha-card">
-                    <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
-                    </span>`);
+                        }else if(gachaCard.rarity == "슈페리어"){
+                            console.log("3")
+                            $("#card-superior").append(`<span class="gacha-card">
+                            <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+                            </span>`);
 
-                } else if(gachaCard.rarity == "언커먼"){
-                    console.log("4")    
-                    $("#card-uncommon").append(`<span class="gacha-card">
-                    <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
-                    </span>`);
+                        } else if(gachaCard.rarity == "언커먼"){
+                            console.log("4")
+                            $("#card-uncommon").append(`<span class="gacha-card">
+                            <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+                            </span>`);
 
-                } else if(gachaCard.rarity == "커먼"){
-                    console.log("5")
-                    $("#card-common").append(`<span class="gacha-card">
-                    <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
-                    </span>`);
+                        } else if(gachaCard.rarity == "커먼"){
+                            console.log("5")
+                            $("#card-common").append(`<span class="gacha-card">
+                            <img  style="width: 13%;margin-bottom:7px;" src="`+gachaCard.image+`" onerror="this.src='/images/deckMaker_defaultImg.png'">
+                            </span>`);
 
-                }
+                        }
 
-         });
-         
-    }).fail((e)=>{
-       alert(e);
-    });
+                 });
+
+            }).fail((e)=>{
+               alert(e);
+            });
+    }
+
 
 }
 // 수량 증가버튼 (10 click->1)
@@ -246,6 +253,8 @@ const buyBtn = () =>{
                            alert(e);
                         });   
                     }
+                }else{
+                    alert("가챠 종류를 선택해주세요");
                 }
 }
 
@@ -255,11 +264,11 @@ const buyBtn = () =>{
 // 등급별 카드 확률 모달창
 const gachaPercentageListBtn= () =>{
 
-    $("#gachaPercentageModal").modal("show");
     $("#gachaPercentage-modal-body").html("");
 
     // 쉐도우 뽑기 확률
     if(gachaClick == 2){
+                $("#gachaPercentageModal").modal("show");
                 $("#gachaPercentage-modal-body").html(`
                 <table style="border:1px solid;width:700px;">
                     <tr>
@@ -273,11 +282,8 @@ const gachaPercentageListBtn= () =>{
                 </table>
                 `);
 
-    }
-
-
-        // 유니크 확정팩 뽑기 확률
-        if(gachaClick == 1){
+    }else if(gachaClick == 1){
+            $("#gachaPercentageModal").modal("show");
             $("#gachaPercentage-modal-body").html(`
             <table style="border:1px solid;width:700px;">
                 <tr>
@@ -307,6 +313,8 @@ const gachaPercentageListBtn= () =>{
             </table>
             `);
 
-}
+    }else{
+        alert("가챠 종류를 선택해주세요");
+          }
 
 }

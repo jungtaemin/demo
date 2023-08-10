@@ -31,8 +31,8 @@ public class CardService {
         return cardRepository.findAllByKeyword(keyword);
     }
 
-    public PageDto<Card> findAllPaging(int page,String keyword){
-        PageDto<Card> pageDto = new CardPageFactory<Card>().create().setLimitAndKeyword(page,keyword);
+    public PageDto<Card> findAllPaging(int page,String keyword,String sort){
+        PageDto<Card> pageDto = new CardPageFactory<Card>().create().setLimitAndKeyword(page,keyword,sort);
         List<Card> allPaging = cardRepository.findAllPaging(pageDto);
         int allCount = cardRepository.findAllCount(pageDto);
         return pageDto.ofPageParam(page,allCount,allPaging);

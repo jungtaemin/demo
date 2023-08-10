@@ -7,12 +7,14 @@ const searchKeyword = keyword => {
             $("#pagingGroup").html("");
             $("#sharedTableList").html("");
             console.log(pagingCardList);
-            pagingCardList.pageData.forEach(cardList =>{
-                $("#sharedTableList").append(`<div class="card" style="width:200px"
-                                          onclick="dbCardDetail('`+cardList.id+`')">
-                                          <img class="card-img-top" src="`+cardList.image+`" alt="Card image">
-                                          <div class="card-body"><div class="smallContentFont">`+cardList.name+`</div></div>
-                                          </div>`)
+            pagingCardList.pageData.forEach(shared =>{
+                $("#sharedTableList").append(`<tr onclick="sharedDetail(`+shared.id+`);">
+                                              <td>`+shared.rowNum+`</td>
+                                              <td>`+shared.title+`</td>
+                                              <td>`+shared.writer+`</td>
+                                              <td>`+shared.createDate+`</td>
+                                              <td>`+shared.views+`</td>
+                                              </tr>`)
             })
             //이전버튼
             if(pagingCardList.page <= 1){
@@ -56,7 +58,9 @@ const sharedList = () =>{
     }).done((sharedList) =>{
         console.log(sharedList);
         sharedList.pageData.forEach(shared =>{
-            $("#sharedTableList").append(`<tr onclick="sharedDetail(`+shared.id+`);"><td>`+shared.title+`</td>
+            $("#sharedTableList").append(`<tr onclick="sharedDetail(`+shared.id+`);">
+                                          <td>`+shared.rowNum+`</td>
+                                          <td>`+shared.title+`</td>
                                           <td>`+shared.writer+`</td>
                                           <td>`+shared.createDate+`</td>
                                           <td>`+shared.views+`</td>
@@ -200,4 +204,60 @@ const sharedDetailAjax = id =>{
             alert(e);
         })
 
+}
+
+
+const latestBySearchKeyword = () =>{
+    let keyword = $("#cardKeyword").val();
+    searchKeyword(keyword);
+}
+
+const viewsBySearchKeyword = () =>{
+     let keyword = $("#cardKeyword").val();
+     let sort = "views";
+
+
+             $.ajax({
+                 type:"GET",
+                 url:"/shared/api?keyword="+keyword+"&sort="+sort
+             }).done((pagingCardList) =>{
+                 $("#pagingGroup").html("");
+                 $("#sharedTableList").html("");
+                 console.log(pagingCardList);
+                 pagingCardList.pageData.forEach(shared =>{
+                     $("#sharedTableList").append(`<tr onclick="sharedDetail(`+shared.id+`);">
+                                                   <td>`+shared.rowNum+`</td>
+                                                   <td>`+shared.title+`</td>
+                                                   <td>`+shared.writer+`</td>
+                                                   <td>`+shared.createDate+`</td>
+                                                   <td>`+shared.views+`</td>
+                                                   </tr>`)
+                 })
+                 //이전버튼
+                 if(pagingCardList.page <= 1){
+                     $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">이전</a></li>`);
+                 }else{
+                     let pageNum = pagingCardList.page -1;
+                     $("#pagingGroup").append(`<li class="page-item"><a class="page-link"onclick="keywordPageApi(`+pageNum+`,'`+pagingCardList.keyword+`');">이전</a></li>`);
+                 }
+
+                 //페이지버튼
+                 for (var i = pagingCardList.startPage; i <= pagingCardList.endPage; i++) { // 배열 arr의 모든 요소의 인덱스(index)를 출력함.
+                   if(pagingCardList.page == i){
+                     $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link">`+i+`</a></li>`);
+                   }else{
+                     $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="keywordPageApi(`+i+`,'`+pagingCardList.keyword+`');">`+i+`</a></li>`);
+                   }
+                 }
+
+                 //다음버튼
+                 if(pagingCardList.page >= pagingCardList.maxPage){
+                     $("#pagingGroup").append(`<li class="page-item disabled"><a class="page-link" href="#">다음</a></li>`);
+                 }else{
+                     let pageNum = pagingCardList.page +1;
+                     $("#pagingGroup").append(`<li class="page-item"><a class="page-link" onclick="keywordPageApi(`+pageNum+`,'`+pagingCardList.keyword+`');">다음</a></li>`);
+                 }
+             }).fail((e) =>{
+                 alert(e);
+             });
 }

@@ -30,6 +30,7 @@
     <table class="table table-dark table-hover">
         <thead>
           <tr>
+            <th></th>
             <th>제목</th>
             <th>글쓴이</th>
             <th>날짜</th>

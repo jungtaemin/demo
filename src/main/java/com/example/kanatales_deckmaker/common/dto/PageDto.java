@@ -21,10 +21,12 @@ public class PageDto<T> {
     private int blockLimit;
 
     private String keyword;
+    private String sort;
 
-    public PageDto<T> setLimitAndKeyword(int page,String keyword){
+    public PageDto<T> setLimitAndKeyword(int page,String keyword,String sort){
         this.page = (page-1) * pageLimit;
         this.keyword = keyword;
+        this.sort = sort;
         return this;
     }
 
