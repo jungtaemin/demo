@@ -3,7 +3,7 @@ const dbCardList = () =>{
 
     $.ajax({
         type:"GET",
-        url:"/card/api"
+        url:"/card/api/search?keyword="
     }).done((cardList) =>{
         $("#deckDbCardList").html("");
         cardList.forEach(cardList =>{
