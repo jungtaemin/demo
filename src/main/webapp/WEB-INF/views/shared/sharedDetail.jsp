@@ -6,7 +6,7 @@
 
   <div class="card">
     <div class="card-body">
-        <table class="table-hover" id="sharedDetailTable" style="width:1100px">
+        <table class="table-hover" id="sharedDetailTable" style="width:1260px">
           <tr class="board-title">
             <td id="detail-title" style="width:900px";></td>
             <td id="detail-createDate" style="width:200px"></td>
@@ -22,6 +22,22 @@
             <td id="detail-contents"></td>
           </tr>
         </table>
+
+         <table class="table-hover" id="commentTable" style="width:1260px">
+         <tr>
+            <td class="contentFont">전체 댓글 <span id="commentCount" class="contentErrorFont">0</span>개</td>
+         </tr>
+         <table>
+
+        <div class="card">
+            <div class="card-body">
+          <label for="comment">댓글 쓰기</label>
+          <textarea class="form-control" rows="4" name="text" id="commentContents"></textarea>
+          <button type="button" class="btn btn-primary" style="float: right;margin:5px;" onclick="commentSave(`${shared_id}`);">등록</button>
+          </div>
+          </div>
+
+
     </div>
   </div>
     <%-- 리스트 --%>
@@ -42,6 +58,8 @@
       </table>
     </div>
   </div>
+
+
   <sec:authorize access="isAuthenticated()">
   <div style="height:40px"><button type="button" class="btn btn-primary" style="float: right;" onclick="clickSharedSave();">공유 덱 등록</button></div>
   </sec:authorize>
@@ -102,5 +120,6 @@
 <script>
 let deckId = [[${shared_id}]];
 sharedDetailAjax(deckId);
+commentDataAjax(deckId);
 </script>
 </html>

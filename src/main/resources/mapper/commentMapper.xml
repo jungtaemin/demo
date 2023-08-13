@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.kanatales_deckmaker.comment.repository.CommentRepository">
+
+    <select id="findAllBySharedId" parameterType="Long" resultType="com.example.kanatales_deckmaker.comment.domain.Comment">
+        SELECT
+            c.id,
+            c.contents,
+            c.writer,
+            c.create_date
+        FROM
+            comment c
+        INNER JOIN shared sh ON c.shared_id = sh.id
+        WHERE sh.id = #{id}
+        ORDER BY id desc
+    </select>
+
+    <insert id="save" parameterType="com.example.kanatales_deckmaker.comment.domain.Comment">
+        INSERT INTO
+            comment(
+            contents,
+            writer,
+            shared_id,
+            create_date
+            )
+        VALUE(
+            #{contents},
+            #{writer},
+            #{sharedId},
+            NOW()
+        )
+
+    </insert>
+</mapper>

@@ -261,3 +261,50 @@ const viewsBySearchKeyword = () =>{
                  alert(e);
              });
 }
+
+// 댓글 목록 ajax
+const commentDataAjax = id =>{
+
+             $.ajax({
+                 type:"GET",
+                 url:"/comment/api/"+id
+             }).done((commentList) =>{
+                commentList.forEach(comment =>{
+                    $("#commentTable").append(`<tr class="board-title">
+                                                <td id="detail-title" style="width:900px";>`+comment.writer+`</td>
+                                                <td id="detail-title" style="width:900px";>`+comment.contents+`</td>
+                                                <td id="detail-createDate" style="width:200px">`+comment.createDate+`</td>
+                                            </tr>`);
+
+                });
+             }).fail((e) =>{
+                 alert(e);
+             });
+
+}
+
+
+// 댓글 등록
+const commentSave = id =>{
+
+        let comment = {sharedId:id, contents:$("#commentContents").val()}
+             $.ajax({
+                 type:"POST",
+                 url:"/comment/api",
+                 contentType:"application/json",
+                 data:JSON.stringify(comment)
+             }).done((commentList) =>{
+                commentList.forEach(comment =>{
+                    $("#commentTable").html(`<tr class="board-title">
+                                                <td id="detail-title" style="width:900px";>`+comment.writer+`</td>
+                                                <td id="detail-title" style="width:900px";>`+comment.contents+`</td>
+                                                <td id="detail-createDate" style="width:200px">`+comment.createDate+`</td>
+                                            </tr>`);
+
+                });
+             }).fail((e) =>{
+                 alert(e);
+             });
+
+
+}
