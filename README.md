@@ -1,6 +1,7 @@
 ![kanaMain](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/8cf601c2-2766-4761-a15d-3da499253cb0)
 # kanatales_deckmaker
-사이트 주소 : http://kanadeckmaker.kro.kr/  
+~~사이트 주소 : http://kanadeckmaker.kro.kr/~~
+(2023-08-15 현재 aws를 NLB+ALB 로 고정ip주소때문에 NLB를 썼는데 로드밸런서를 두개를 돌리는것으로 되어서 현재 로드밸런서쪽 프리티어사용량을 거의 다써버렸다.임시 중단.9월되기전까지 어떻게해야할지 고민중..)
 카나테일즈라는 모바일 카드게임을 하다가 인기가 별로 없는 게임이라서 편의성을 주는 사이트가 없어서 있으면
 좋겠다는 생각으로 만들기 시작했습니다.카나테일즈 카드를 사이트에서 확인해보고 덱을 사이트에서 만들어 보
 거나 다른사람들의 덱을 확인가능한 사이트로 최종적으로 만들예정입니다.
@@ -112,8 +113,8 @@
 ### 공유 덱 리스트
 ![sharedComment](https://github.com/jungtaemin/kanatales_deckmaker/assets/96284736/1c442987-b16f-4a6e-91b0-e61e8dd2690c)
 * 댓글 등록 기능 추가
-확인된 에러 ) 댓글 등록후 리스트 reload안됨,공유덱 등록시 덱리스트 세로로 출력됨 -> 가로로 되야함
-추가할만한 기능) 대댓글
+* 확인된 에러 ) 댓글 등록후 리스트 reload안됨,공유덱 등록시 덱리스트 세로로 출력됨 -> 가로로 되야함
+* 추가할만한 기능) 대댓글
 
 
 # 패치노트 v1.6(2023-08-10)
