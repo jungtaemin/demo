@@ -17,6 +17,15 @@
         ORDER BY id desc
     </select>
 
+    <select id="findAllBySharedIdCount" resultType="int" parameterType="Long">
+        SELECT
+            COUNT(id)
+        FROM
+            comment
+        WHERE shared_id = #{id}
+    </select>
+
+
     <insert id="save" parameterType="com.example.kanatales_deckmaker.comment.domain.Comment">
         INSERT INTO
             comment(

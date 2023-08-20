@@ -21,7 +21,7 @@
             <th>조회</th>
           </tr>
         </thead>
-        <tbody id="sharedTableList">
+        <tbody id="sharedTableList" style="cursor:pointer;">
         </tbody>
       </table>
     </div>
@@ -63,7 +63,7 @@
             <div class="card">
               <div class="card-body">
               <h4 class="modal-title">덱 선택</h4>
-                      <div id="saveModal-deckList"></div>
+                      <div id="saveModal-deckList" style="display: flex;"></div>
               </div>
             </div>
             <input type="hidden" id="deckHidden" />

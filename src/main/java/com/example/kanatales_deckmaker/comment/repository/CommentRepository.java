@@ -10,5 +10,7 @@ public interface CommentRepository {
 
     List<Comment> findAllBySharedId(Long id);
 
+    int findAllBySharedIdCount(Long id);
+
     void save(Comment comment);
 }

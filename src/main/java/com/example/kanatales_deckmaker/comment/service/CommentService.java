@@ -17,6 +17,9 @@ public class CommentService {
         return commentRepository.findAllBySharedId(id);
     }
 
+    public int findAllBySharedIdCount(Long id){
+        return commentRepository.findAllBySharedIdCount(id);
+    }
 
     public void save(Comment comment){
         commentRepository.save(comment);

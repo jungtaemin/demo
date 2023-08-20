@@ -264,12 +264,15 @@ const viewsBySearchKeyword = () =>{
 
 // 댓글 목록 ajax
 const commentDataAjax = id =>{
-
+             $("#commentTable").html();
+             $("#commentTable").html(`<tr>
+                                         <td class="contentFont">전체 댓글 <span id="commentCount" class="contentErrorFont">0</span>개</td>
+                                      </tr>`);
              $.ajax({
                  type:"GET",
                  url:"/comment/api/"+id
              }).done((commentList) =>{
-                commentList.forEach(comment =>{
+                commentList.comment.forEach(comment =>{
                     $("#commentTable").append(`<tr class="board-title">
                                                 <td id="detail-title" style="width:900px";>`+comment.writer+`</td>
                                                 <td id="detail-title" style="width:900px";>`+comment.contents+`</td>
@@ -277,6 +280,8 @@ const commentDataAjax = id =>{
                                             </tr>`);
 
                 });
+
+                $("#commentCount").html(commentList.count);
              }).fail((e) =>{
                  alert(e);
              });
@@ -293,18 +298,9 @@ const commentSave = id =>{
                  url:"/comment/api",
                  contentType:"application/json",
                  data:JSON.stringify(comment)
-             }).done((commentList) =>{
-                commentList.forEach(comment =>{
-                    $("#commentTable").html(`<tr class="board-title">
-                                                <td id="detail-title" style="width:900px";>`+comment.writer+`</td>
-                                                <td id="detail-title" style="width:900px";>`+comment.contents+`</td>
-                                                <td id="detail-createDate" style="width:200px">`+comment.createDate+`</td>
-                                            </tr>`);
-
-                });
+             }).done(() =>{
+                 commentDataAjax(id);
              }).fail((e) =>{
                  alert(e);
              });
-
-
 }

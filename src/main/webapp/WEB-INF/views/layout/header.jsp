@@ -48,7 +48,7 @@
                               <a class="nav-link" href="/gacha">가챠 시뮬</a>
             </li>
             <li class="nav-item">
-                              <a class="nav-link" href="/shared">공유 덱 리스트(제작중)</a>
+                              <a class="nav-link" href="/shared">공유 덱 리스트</a>
             </li>
 
     </ul>
