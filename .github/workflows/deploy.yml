@@ -54,9 +54,9 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }} # github secrets로 등록한 값 사용
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }} # github secrets로 등록한 값 사용
-          application_name: kanatales-deckmaker # EB application 이름
-          environment_name: Kanatales-deckmaker-env-1 # EB environment 이름
-          version_label: kanatales-deckmaker-${{steps.current-time.outputs.formattedTime}} # 배포 버전은 타임스탬프를 이용하여 구분
+          application_name: kanatales-elastic-server # EB application 이름
+          environment_name: Kanatales-elastic-server-env # EB environment 이름
+          version_label: kanatales-elastic-server-${{steps.current-time.outputs.formattedTime}} # 배포 버전은 타임스탬프를 이용하여 구분
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
           wait_for_environment_recovery: 180 # default wait time은 30초이며, 필자의 EB가 느려서 180초로 지정했습니다(지정 안하면 간혹 timeout 발생).
