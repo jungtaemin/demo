@@ -28,14 +28,26 @@
             <td class="contentFont">전체 댓글 <span id="commentCount" class="contentErrorFont">0</span>개</td>
          </tr>
          <table>
+        <sec:authorize access="isAnonymous()">
+           <div class="card">
+                 <div class="card-body">
+                     <label for="comment">댓글 쓰기</label>
+                     <textarea class="form-control" rows="4" name="text" id="commentContents" readonly>댓글을 작성하시려면 로그인을 해주세요.</textarea>
+                     <button type="button" class="btn btn-primary" style="float: right;margin:5px;" onclick="loginConfirm();">등록</button>
+                 </div>
+           </div>
+        </sec:authorize>
 
-        <div class="card">
-            <div class="card-body">
-          <label for="comment">댓글 쓰기</label>
-          <textarea class="form-control" rows="4" name="text" id="commentContents"></textarea>
-          <button type="button" class="btn btn-primary" style="float: right;margin:5px;" onclick="commentSave(`${shared_id}`);">등록</button>
-          </div>
-          </div>
+        <sec:authorize access="isAuthenticated()">
+           <div class="card">
+                 <div class="card-body">
+                     <label for="comment">댓글 쓰기</label>
+                     <textarea class="form-control" rows="4" name="text" id="commentContents"></textarea>
+                     <button type="button" class="btn btn-primary" style="float: right;margin:5px;" onclick="commentSave(`${shared_id}`);">등록</button>
+                 </div>
+           </div>
+        </sec:authorize>
+
 
 
     </div>

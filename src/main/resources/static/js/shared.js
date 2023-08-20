@@ -304,3 +304,15 @@ const commentSave = id =>{
                  alert(e);
              });
 }
+
+const loginConfirm = ()=>{
+
+    let result = confirm("로그인 하시겠습니까?");
+    if(result){
+        location.href='/loginForm'
+    }else{
+        
+    }
+
+    
+}
